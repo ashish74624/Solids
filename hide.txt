@@ -1,0 +1,140 @@
+import express from "express";
+import bodyParser from "body-parser";
+import mongoose from "mongoose";
+import cors from "cors";
+import dotenv from "dotenv";
+import multer from "multer";
+import helmet from "helmet";
+import morgan from "morgan";
+import path from "path";
+import { fileURLToPath} from "url";
+import authRoutes from './routes/auth.json'
+import userRoutes from './routes/users.js'
+import postRoutes from './routes/posts.js'
+import { register } from './controllers/auth.js'
+import { createPost } from './controllers/posts.js'
+import { verifyToken } from "./middleware/auth";
+
+/* CONFIGURATION */
+const __filename = fileURLToPath(import.meta.url) // just a way to use __filename & __dirname in "type":"module" . coz it can be used just by calling the functions in common js
+const __dirname = path.dirname(__filename);
+dotenv.config();// So we can use dotenv files
+
+const app = express(); //To use express
+app.use(express.json())
+app.use(helmet);
+app.use(helmet.crossOriginResourcePolicy({policy:"cross-origin"}));
+app.use(morgan("common"));
+app.use(bodyParser.json({ limit:"30mb" , extended:true }))
+app.use(bodyParser.urlencoded({ limit:"30mb" , extended:true }))
+app.use(cors());
+app.use('/assets',express.static(path.join(__dirname,'/public/assets')));
+
+/* FILE STORAGE */
+
+const storage = multer.diskStorage({
+    destination: (req,file,cb) => {
+        cb(null, '/public/assets')
+        },
+        filename: (req,file,cb) => {
+            cb(null, file.originalname)
+        }
+})
+
+const upload = multer({storage});
+
+/* ROUTES WITH POST */
+app.post('/auth/register', upload.single("picture"), register)
+app.post('/posts',verifyToken,upload.single("picture"), createPost)
+
+/* ROUTES */
+app.use("/auth", authRoutes);
+app.use("/users",userRoutes);
+app.use("/posts",postRoutes);
+
+/* MONGOOSE SETUP */
+const PORT = process.env.PORT || 6001;
+const MONGO_URL = process.env.MONGO_URL;
+
+async function connectToMongoDB() {
+  try {
+    await mongoose.connect(MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('Connected to MongoDB');
+  } catch (error) {
+    console.log(`${error} did not connect to MongoDB`);
+  }
+}
+
+async function startServer() {
+  try {
+    await connectToMongoDB();
+    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+  } catch (error) {
+    console.log(`${error} failed to start server`);
+  }
+}
+
+startServer();
+
+//controllers/auth.js
+import bcrypt from 'bcrypt'; // For password encryption
+import jwt from "jsonwebtoken"; // This will give us a way to send the user a webtocken so that they could use for authrization
+import User from "../models/User.js"; 
+
+/* REGISTER USER */
+export const register = async(req,res)=>{
+    try{
+        const {
+            firstName,
+            lastName,
+            email,
+            password,
+            picturePath,
+            friends,
+            location,
+            occupation
+        }=req.body;
+
+        const salt = await bcrypt.genSalt();//We are awaiting a random salt from bcrypt and we are using that salt to encrypt aur password
+        const passwordHash = await bcrypt.hash(password,salt); // hasing the password and the salt to create encryption
+        const newUser = new User({
+            firstName,
+            lastName,
+            email,
+            password : passwordHash,
+            picturePath,
+            friends,
+            location,
+            occupation,
+            viewedProfile : Math.floor(Math.random()*1000),
+            impressions : Math.floor(Math.random()*1000)
+            });
+            const savedUser = await newUser.save()
+            res.status(201).json(savedUser);
+    }
+    catch(err){
+        res.status(500).json({ error: err.message })
+    }
+}
+
+/* LOGIN */
+export const login = async(req,res)=>{
+    try{
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if(!user) return res.status(400).json({ msg: "User Does Not Exist" });
+
+    const isMatch = await bcrypt.compare(password,user.password);
+    if(!isMatch) return res.status(400).json({ msg: "Incorrect Password" });
+
+    const token = jwt.sign({ id:user._id }, process.env.JWT_SCRT);
+    delete user.password;
+    res.status(200).json({ token,user })
+    }
+    catch(err){
+        res.status(500).json({ error: err.message })
+    }    
+}
