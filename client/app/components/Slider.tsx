@@ -9,23 +9,23 @@ export default function Slider() {
     <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
          {/* <!-- Item 1 --> */}
         <div className=" duration-700 ease-in-out" data-carousel-item>
-            <img src="https://get-image.vercel.app/Day/Cloudy.webp" className=" block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt=""/>
+            <img src="https://image-get.vercel.app/Day/Blizzard.webp" className=" block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt=""/>
         </div>
         {/* <!-- Item 2 --> */}
         <div className=" duration-700 ease-in-out" data-carousel-item="active">
-            <img src="https://get-image.vercel.app/Day/Blizzard.webp" className=" block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt=""/>
+            <img src="https://image-get.vercel.app/Day/Blizzard.webp" className=" block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt=""/>
         </div>
         {/* <!-- Item 3 --> */}
         <div className=" duration-700 ease-in-out" data-carousel-item>
-            <img src="https://get-image.vercel.app/Night/Sunny.webp" className="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt=""/>
+            <img src="https://image-get.vercel.app/Night/Sunny.webp" className="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt=""/>
         </div>
         {/* <!-- Item 4 --> */}
         <div className=" duration-700 ease-in-out" data-carousel-item>
-            <img src="https://get-image.vercel.app/Night/Blizzard.webp" className="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt=""/>
+            <img src="https://image-get.vercel.app/Night/Blizzard.webp" className="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt=""/>
         </div>
         {/* <!-- Item 5 --> */}
         <div className=" duration-700 ease-in-out" data-carousel-item>
-            <img src="https://get-image.vercel.app/Day/Sunny.webp" className="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt=""/>
+            <img src="https://image-get.vercel.app/Day/Sunny.webp" className="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt=""/>
         </div>
     </div>
     {/* <!-- Slider controls --> */}
