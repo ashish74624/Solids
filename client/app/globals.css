@@ -2,3 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components{
+    .hover-btn{
+        @apply content-[''] after:bg-red-500 after:block after:scale-x-0 hover:after:scale-x-100 after:transition-all after:delay-100  after:origin-left after:h-1
+    }
+}
