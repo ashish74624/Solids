@@ -573,7 +573,7 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
   content: var(--tw-content);
-  transition-delay: 100ms;
+  transition-delay: 200ms;
 }
 .hover-btn:hover::after {
   content: var(--tw-content);
@@ -701,9 +701,6 @@ video {
 }
 .rounded-full {
   border-radius: 9999px;
-}
-.rounded-lg {
-  border-radius: 0.5rem;
 }
 .bg-\[\#F3F4F7\] {
   --tw-bg-opacity: 1;
