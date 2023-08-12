@@ -4,6 +4,10 @@
 
 @layer components{
     .hover-btn{
-        @apply content-[''] after:bg-red-500 after:block after:scale-x-0 hover:after:scale-x-100 after:transition-all after:delay-200  after:origin-left after:h-1
+        @apply content-[''] after:bg-red-500 after:block after:scale-x-0 hover:after:scale-x-100 after:transition-all after:delay-200  after:origin-left after:h-[2px] text-lg
     }
+}
+
+body{
+    font-family: 'Borel', cursive;
 }
