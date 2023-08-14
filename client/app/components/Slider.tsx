@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from "framer-motion"
+import useSwipe from '../hooks/useSwipe';
 
 export default function Slider() {
   const images = [
@@ -16,7 +17,7 @@ export default function Slider() {
   ];
   const [img, setImg] = useState(0);
   const [intervalId,setIntervalId]:any = useState(null) 
-  // const [isTransitioning, setIsTransitioning] = useState(false);
+
 
   const changeImage = () => {
     // setIsTransitioning(true);
@@ -33,6 +34,18 @@ export default function Slider() {
     startInterval();
   }
 
+  const handlePrev=()=>{
+    setImg((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+            clearAndStartInterval();
+  }
+
+  const handleNext=()=>{
+    setImg((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+            clearAndStartInterval();
+  }
+
+  const swipeHandlers = useSwipe({ onSwipedLeft: () => handleNext(), onSwipedRight: () => handlePrev() });
+
   useEffect(() => {
     startInterval();
 
@@ -40,6 +53,7 @@ export default function Slider() {
       clearInterval(intervalId);
     };
   }, []);
+
 
   return (
     <>
@@ -58,8 +72,7 @@ export default function Slider() {
         <button
           className='bg-white h-10 w-10 rounded-full absolute top-[280px] left-3'
           onClick={() => {
-            setImg((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-            clearAndStartInterval();
+            handlePrev();
           }}
         >
           P
@@ -67,8 +80,7 @@ export default function Slider() {
         <button
           className='bg-white h-10 w-10 rounded-full absolute top-[280px] right-3'
           onClick={() => {
-            setImg((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-            clearAndStartInterval();
+            handleNext();
           }}
         >
           N
