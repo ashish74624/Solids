@@ -8,6 +8,8 @@
     }
 }
 
-body{
-    font-family: 'Borel', cursive;
-}
+SimpleImageSlider {
+    background-size: contain !important ;
+    height : 60vh ;
+    width : 100vh;
+  }

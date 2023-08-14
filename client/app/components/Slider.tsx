@@ -1,52 +1,71 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react';
 
 export default function Slider() {
+  const images = [
+    {
+      url: 'https://placehold.co/600x400',
+    },
+    {
+      url: 'https://image-get.vercel.app/Ecommerce/1.webp',
+    },
+    {
+      url: 'https://image-get.vercel.app/Ecommerce/2.webp',
+    },
+    {
+      url: 'https://image-get.vercel.app/Ecommerce/3.webp',
+    },
+  ];
+  const [img, setImg] = useState(0);
+  // const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const changeImage = () => {
+    // setIsTransitioning(true);
+    setTimeout(() => {
+      setImg((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+      // setIsTransitioning(false);
+    }, 5000);
+  };
+
+  const startInterval=()=>{
+    const newInterval =  setInterval(()=>changeImage(),5000 )
+  }
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      changeImage();
+    }, 5000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
   return (
     <>
-     
-<div id="gallery" className="relative w-full" data-carousel="slide">
-    {/* <!-- Carousel wrapper --> */}
-    <div className="relative h-56 overflow-hidden md:h-96">
-         {/* <!-- Item 1 --> */}
-        <div className=" duration-700 ease-in-out" data-carousel-item>
-            <img src="https://image-get.vercel.app/Day/Blizzard.webp" className=" block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt=""/>
-        </div>
-        {/* <!-- Item 2 --> */}
-        <div className=" duration-700 ease-in-out" data-carousel-item="active">
-            <img src="https://image-get.vercel.app/Day/Blizzard.webp" className=" block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt=""/>
-        </div>
-        {/* <!-- Item 3 --> */}
-        <div className=" duration-700 ease-in-out" data-carousel-item>
-            <img src="https://image-get.vercel.app/Night/Sunny.webp" className="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt=""/>
-        </div>
-        {/* <!-- Item 4 --> */}
-        <div className=" duration-700 ease-in-out" data-carousel-item>
-            <img src="https://image-get.vercel.app/Night/Blizzard.webp" className="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt=""/>
-        </div>
-        {/* <!-- Item 5 --> */}
-        <div className=" duration-700 ease-in-out" data-carousel-item>
-            <img src="https://image-get.vercel.app/Day/Sunny.webp" className="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt=""/>
-        </div>
-    </div>
-    {/* <!-- Slider controls --> */}
-    <button type="button" className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg className="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4"/>
-            </svg>
-            <span className="sr-only">Previous</span>
-        </span>
-    </button>
-    <button type="button" className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg className="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4"/>
-            </svg>
-            <span className="sr-only">Next</span>
-        </span>
-    </button>
-</div>
- 
+      <section className='w-screen h-[500px] relative'>
+        <img
+          src={images[img].url}
+          className={`w-full h-full bg-cover bg-no-repeat duration-500 bg-left-top rounded-2xl`}
+          alt='Slider Image'
+        />
+        <button
+          className='bg-white h-10 w-10 rounded-full absolute top-[280px] left-3'
+          onClick={() => {
+            setImg((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+          }}
+        >
+          P
+        </button>
+        <button
+          className='bg-white h-10 w-10 rounded-full absolute top-[280px] right-3'
+          onClick={() => {
+            setImg((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+          }}
+        >
+          N
+        </button>
+      </section>
     </>
-  )
+  );
 }
