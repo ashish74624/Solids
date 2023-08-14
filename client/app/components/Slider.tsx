@@ -1,40 +1,40 @@
 'use client'
 import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from "framer-motion"
 
 export default function Slider() {
   const images = [
     {
-      url: 'https://placehold.co/600x400',
+      url: 'https://placehold.co/600x400/000000/FFFFFF/png',
     },
     {
-      url: 'https://image-get.vercel.app/Ecommerce/1.webp',
+      url: 'https://placehold.co/600x400/orange/white/png',
     },
     {
-      url: 'https://image-get.vercel.app/Ecommerce/2.webp',
-    },
-    {
-      url: 'https://image-get.vercel.app/Ecommerce/3.webp',
+      url: 'https://placehold.co/600x400/brown/white/png',
     },
   ];
   const [img, setImg] = useState(0);
+  const [intervalId,setIntervalId]:any = useState(null) 
   // const [isTransitioning, setIsTransitioning] = useState(false);
 
   const changeImage = () => {
     // setIsTransitioning(true);
-    setTimeout(() => {
       setImg((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-      // setIsTransitioning(false);
-    }, 5000);
   };
 
   const startInterval=()=>{
-    const newInterval =  setInterval(()=>changeImage(),5000 )
+    const newInterval =  setInterval(()=>changeImage(),5000 );
+    setIntervalId(newInterval)
+  };
+
+  const clearAndStartInterval=()=>{
+    clearInterval(intervalId);
+    startInterval();
   }
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      changeImage();
-    }, 5000);
+    startInterval();
 
     return () => {
       clearInterval(intervalId);
@@ -43,16 +43,23 @@ export default function Slider() {
 
   return (
     <>
-      <section className='w-screen h-[500px] relative'>
-        <img
-          src={images[img].url}
-          className={`w-full h-full bg-cover bg-no-repeat duration-500 bg-left-top rounded-2xl`}
+        <AnimatePresence>
+      <section className='w-screen h-[600px] relative'>
+        <motion.img
+         key={images[img].url}
+           src={images[img].url}
+         initial={{ opacity: 0 }}
+         animate={{ opacity: 1 }}
+         exit={{ opacity: 0 }}
+         transition={{duration:1}}
+          className={`w-full h-full bg-cover bg-no-repeat duration-500 bg-left-top `}
           alt='Slider Image'
         />
         <button
           className='bg-white h-10 w-10 rounded-full absolute top-[280px] left-3'
           onClick={() => {
             setImg((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+            clearAndStartInterval();
           }}
         >
           P
@@ -61,11 +68,13 @@ export default function Slider() {
           className='bg-white h-10 w-10 rounded-full absolute top-[280px] right-3'
           onClick={() => {
             setImg((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+            clearAndStartInterval();
           }}
         >
           N
         </button>
       </section>
+        </AnimatePresence>
     </>
   );
 }
