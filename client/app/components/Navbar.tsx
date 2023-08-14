@@ -15,10 +15,10 @@ export default function Navbar() {
                 <span className={`text-red-500  my-auto text-4xl `}>Solids</span>
                 <ul className="flex space-x-4 my-auto">
                   <Link href={'/'} className=" hover-btn" >
-                    <li >Men's Clothing</li>
+                    <li >Men&apos;s Clothing</li>
                   </Link>
                   <Link href={'/'} className=" hover-btn" >
-                    <li >Women's Clothing</li>
+                    <li >Women&apos;s Clothing</li>
                   </Link>
                   <Link href={'/'} className=" hover-btn" >
                     <li >Jewelery</li>
