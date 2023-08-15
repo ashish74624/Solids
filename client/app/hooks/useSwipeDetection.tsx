@@ -1,43 +1,35 @@
-import { useEffect, useState, RefObject } from 'react';
+import { useEffect, RefObject } from 'react';
 
-const useSwipeDetection = (elementRef: RefObject<HTMLElement | null>) => {
-  const [swipeDirection, setSwipeDirection] = useState<string | null>(null);
+const detectSwipe = (element: HTMLElement | null, onSwipeLeft: () => void, onSwipeRight: () => void) => {
+  let startX: number | null = null;
+  let startY: number | null = null;
 
-  useEffect(() => {
-    const element = elementRef.current;
+  const handleTouchStart = (event: TouchEvent) => {
+    startX = event.touches[0].clientX;
+    startY = event.touches[0].clientY;
+  };
 
-    if (!element) {
+  const handleTouchMove = (event: TouchEvent) => {
+    if (!startX || !startY) {
       return;
     }
 
-    let startX: number | null = null;
-    let startY: number | null = null;
+    const deltaX = event.touches[0].clientX - startX;
+    const deltaY = event.touches[0].clientY - startY;
 
-    const handleTouchStart = (event: TouchEvent) => {
-      startX = event.touches[0].clientX;
-      startY = event.touches[0].clientY;
-    };
-
-    const handleTouchMove = (event: TouchEvent) => {
-      if (!startX || !startY) {
-        return;
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (deltaX > 0) {
+        onSwipeRight();
+      } else {
+        onSwipeLeft();
       }
+    }
 
-      const deltaX = event.touches[0].clientX - startX;
-      const deltaY = event.touches[0].clientY - startY;
+    startX = null;
+    startY = null;
+  };
 
-      if (Math.abs(deltaX) > Math.abs(deltaY)) {
-        if (deltaX > 0) {
-          setSwipeDirection('right');
-        } else {
-          setSwipeDirection('left');
-        }
-      }
-
-      startX = null;
-      startY = null;
-    };
-
+  if (element) {
     element.addEventListener('touchstart', handleTouchStart);
     element.addEventListener('touchmove', handleTouchMove);
 
@@ -45,9 +37,7 @@ const useSwipeDetection = (elementRef: RefObject<HTMLElement | null>) => {
       element.removeEventListener('touchstart', handleTouchStart);
       element.removeEventListener('touchmove', handleTouchMove);
     };
-  }, [elementRef]);
-
-  return swipeDirection;
+  }
 };
 
-export default useSwipeDetection;
+export default detectSwipe;
