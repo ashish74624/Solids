@@ -36,20 +36,16 @@ export default function Slider() {
   }
 
   const handlePrev=()=>{
+    console.log("SWIPED")
     setImg((prev) => (prev === 0 ? images.length - 1 : prev - 1));
             clearAndStartInterval();
   }
 
   const handleNext=()=>{
+    console.log("SWIPED")
+
     setImg((prev) => (prev === images.length - 1 ? 0 : prev + 1));
             clearAndStartInterval();
-  }
-
-  const swipeDirection = useSwipeDetection(swipeRef);
-  if (swipeDirection === 'left') {
-    handleNext();
-  } else if (swipeDirection === 'right') {
-    handlePrev();
   }
 
   useEffect(() => {
@@ -60,6 +56,14 @@ export default function Slider() {
     };
   }, []);
 
+  useEffect(() => {
+    const swipeDirection = useSwipeDetection(swipeRef);
+    if (swipeDirection === 'left') {
+      handleNext();
+    } else if (swipeDirection === 'right') {
+      handlePrev();
+    }
+  }, [swipeRef]);
 
   return (
     <>
