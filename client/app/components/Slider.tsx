@@ -1,18 +1,30 @@
 'use client'
 import React, { useEffect, useState} from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import detectSwipe from '../hooks/useSwipeDetection';
+import { Josefin_Slab } from "next/font/google"
+import Link from 'next/link';
+
+const sc= Josefin_Slab({
+  subsets:['latin'],
+  weight: ['700'],
+})
 
 export default function Slider() {
   const images = [
     {
-      url: 'https://placehold.co/600x400/000000/FFFFFF/png',
+      url: '/1.webp',
+      caption:"Dressed Impeccably to Impress: Elevate Your Style with our Men's Collection",
+      link:"/men"
     },
     {
-      url: 'https://placehold.co/600x400/orange/white/png',
+      url: '/3.webp',
+      caption:"Empower Your Elegance: Dive into Women's Fashion Wonderland",
+      link:'/women'
     },
     {
-      url: 'https://placehold.co/600x400/brown/white/png',
+      url: '/2.webp',
+      caption:'Timeless Elegance: Adorn Yourself with Exquisite Watches & Ornaments',
+      link:'/jewel'
     },
   ];
   const [img, setImg] = useState(0);
@@ -50,7 +62,7 @@ export default function Slider() {
     };
   }, []);
 
-  const [touchStart, setTouchStart] = useState(null)
+const [touchStart, setTouchStart] = useState(null)
 const [touchEnd, setTouchEnd] = useState(null)
 
 // the required distance between touchStart and touchEnd to be detected as a swipe
@@ -80,8 +92,8 @@ const onTouchEnd = () => {
 
   return (
     <>
-      <AnimatePresence>
-        <section className='w-screen h-[600px] relative'
+      <AnimatePresence initial={false}>
+        <section className='w-screen h-screen  relative'
         onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}
         >
           <motion.img
@@ -90,11 +102,21 @@ const onTouchEnd = () => {
             src={images[img].url}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-            className={`w-full h-full bg-cover bg-no-repeat duration-500 bg-left-top `}
+            exit={{ opacity:0 }}
+            transition={{ duration : 0.2}}
+            className={`bg-gradient-to-r from-gray-200 via-gray-400 to-gray-600 w-full h-full bg-cover bg-no-repeat duration-500 bg-left-top `}
             alt='Slider Image'
+            width={1440}
+            height={928}
           />
+          <div className='fixed top-0 z-40 bg-transparent h-screen w-screen flex justify-center items-center'>
+            <span className='flex flex-col'>
+            <h3 className={`${sc.className} text-4xl bg-clip-text text-transparent text-red-600`}>{images[img].caption}</h3>
+            <Link className='self-center' href={`${images[img].link}`}>
+              <button className='text-white bg-black rounded-full px-6 py-4  mt-2 hover:bg-[#1f1f1f] active:bg-[#151313]'>Shop Now</button>
+            </Link>
+            </span>
+          </div>
           <button
             className='bg-white h-10 w-10 rounded-full absolute top-[280px] left-3'
             onClick={() => {
