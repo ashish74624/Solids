@@ -1,7 +1,7 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from "framer-motion"
-import useSwipe from '../hooks/useSwipe';
+import useSwipeDetection from '../hooks/useSwipeDetection';
 
 export default function Slider() {
   const images = [
@@ -16,7 +16,8 @@ export default function Slider() {
     },
   ];
   const [img, setImg] = useState(0);
-  const [intervalId,setIntervalId]:any = useState(null) 
+  const [intervalId,setIntervalId]:any = useState(null);
+  const swipeRef = useRef(null); 
 
 
   const changeImage = () => {
@@ -44,7 +45,12 @@ export default function Slider() {
             clearAndStartInterval();
   }
 
-  const swipeHandlers = useSwipe({ onSwipedLeft: () => handleNext(), onSwipedRight: () => handlePrev() });
+  const swipeDirection = useSwipeDetection(swipeRef);
+  if (swipeDirection === 'left') {
+    handleNext();
+  } else if (swipeDirection === 'right') {
+    handlePrev();
+  }
 
   useEffect(() => {
     startInterval();
@@ -60,6 +66,7 @@ export default function Slider() {
         <AnimatePresence>
       <section className='w-screen h-[600px] relative'>
         <motion.img
+        ref={swipeRef}
          key={images[img].url}
            src={images[img].url}
          initial={{ opacity: 0 }}
