@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState} from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import detectSwipe from '../hooks/useSwipeDetection';
 
@@ -17,7 +17,6 @@ export default function Slider() {
   ];
   const [img, setImg] = useState(0);
   const [intervalId, setIntervalId]:any = useState(null);
-  const swipeRef = useRef(null);
 
   const changeImage = () => {
     setImg((prev) => (prev === images.length - 1 ? 0 : prev + 1));
@@ -51,23 +50,40 @@ export default function Slider() {
     };
   }, []);
 
-  useEffect(() => {
-    const cleanup:any = detectSwipe(
-      swipeRef.current,
-      handlePrev,
-      handleNext
-    );
+  const [touchStart, setTouchStart] = useState(null)
+const [touchEnd, setTouchEnd] = useState(null)
 
-    return () => {
-      clearInterval(intervalId);
-      cleanup();
-    };
-  }, [swipeRef]);
+// the required distance between touchStart and touchEnd to be detected as a swipe
+const minSwipeDistance = 50 
+
+const onTouchStart = (e:any) => {
+  setTouchEnd(null) // otherwise the swipe is fired even with usual touch events
+  setTouchStart(e.targetTouches[0].clientX )
+}
+
+const onTouchMove = (e:any) => setTouchEnd(e.targetTouches[0].clientX)
+
+const onTouchEnd = () => {
+  if (!touchStart || !touchEnd) return
+  const distance = touchStart - touchEnd
+  const isLeftSwipe = distance > minSwipeDistance
+  const isRightSwipe = distance < -minSwipeDistance
+  if (isLeftSwipe || isRightSwipe){
+    if(isLeftSwipe){
+      handleNext();
+    }
+    if(isRightSwipe){
+      handlePrev();
+    }
+  }
+}
 
   return (
     <>
       <AnimatePresence>
-        <section ref={swipeRef} className='w-screen h-[600px] relative'>
+        <section className='w-screen h-[600px] relative'
+        onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}
+        >
           <motion.img
             
             key={images[img].url}
