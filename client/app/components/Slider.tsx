@@ -67,9 +67,9 @@ export default function Slider() {
   return (
     <>
       <AnimatePresence>
-        <section className='w-screen h-[600px] relative'>
+        <section ref={swipeRef} className='w-screen h-[600px] relative'>
           <motion.img
-            ref={swipeRef}
+            
             key={images[img].url}
             src={images[img].url}
             initial={{ opacity: 0 }}
