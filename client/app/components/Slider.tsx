@@ -93,11 +93,10 @@ const onTouchEnd = () => {
   return (
     <>
       <AnimatePresence initial={false}>
-        <section className='w-screen h-screen  relative'
+        <section className='w-screen h-[550px]  relative'
         onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}
         >
-          <motion.img
-            
+          <motion.img            
             key={images[img].url}
             src={images[img].url}
             initial={{ opacity: 0 }}
@@ -109,16 +108,8 @@ const onTouchEnd = () => {
             width={1440}
             height={928}
           />
-          <div className='fixed top-0 z-40 bg-transparent h-screen w-screen flex justify-center items-center'>
-            <span className='flex flex-col'>
-            <h3 className={`${sc.className} text-4xl bg-clip-text text-transparent text-red-600`}>{images[img].caption}</h3>
-            <Link className='self-center' href={`${images[img].link}`}>
-              <button className='text-white bg-black rounded-full px-6 py-4  mt-2 hover:bg-[#1f1f1f] active:bg-[#151313]'>Shop Now</button>
-            </Link>
-            </span>
-          </div>
           <button
-            className='bg-white h-10 w-10 rounded-full absolute top-[280px] left-3'
+            className='bg-white h-10 w-10 rounded-full absolute top-[240px] left-3'
             onClick={() => {
               handlePrev();
             }}
@@ -126,7 +117,7 @@ const onTouchEnd = () => {
             P
           </button>
           <button
-            className='bg-white h-10 w-10 rounded-full absolute top-[280px] right-3'
+            className='bg-white h-10 w-10 rounded-full absolute top-[240px] right-3'
             onClick={() => {
               handleNext();
             }}
