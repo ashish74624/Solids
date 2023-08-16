@@ -13,7 +13,7 @@ export default function Categories() {
                 <div className='absolute top-11 w-96 h-64 bg-slate-700 opacity-0 bg-opacity-0 group-hover:top-0 group-hover:bg-opacity-50 group-hover:opacity-100 group-hover:transition-all group-hover:duration-300 text-white flex justify-center items-center'>Buy Now to get the best offers !</div>
             </div>   
             <caption className="px-5 py-3 w-full h-28 flex flex-col items-center">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">Men's Fashion</h5>
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">Men&apos;s Fashion</h5>
             <Link href='/' className=" items-center px-3 py-2 text-base font-medium text-center text-white bg-gray-900 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 w-full flex justify-center ">
                 Shop Now 
                 <svg className="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -28,7 +28,7 @@ export default function Categories() {
                 <div className='absolute top-11 w-96 h-64 bg-slate-700 opacity-0 bg-opacity-0 group-hover:top-0 group-hover:bg-opacity-50 group-hover:opacity-100 group-hover:transition-all group-hover:duration-300 text-white flex justify-center items-center'>Check Out the best offers on Womens Fashion</div>
             </div>  
             <caption className="px-5 py-3 w-full h-28 flex flex-col items-center">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">Women's Fashion</h5>
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">Women&apos;s Fashion</h5>
             <Link href='/' className=" items-center px-3 py-2 text-base font-medium text-center text-white bg-gray-900 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 w-full flex justify-center ">
                 Shop Now 
                 <svg className="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -43,7 +43,7 @@ export default function Categories() {
                 <div className='absolute top-11 w-96 h-64 bg-slate-700 opacity-0 bg-opacity-0 group-hover:top-0 group-hover:bg-opacity-50 group-hover:opacity-100 group-hover:transition-all group-hover:duration-300 text-white flex justify-center items-center'>Level up your Outfits</div>
             </div>
             <caption className="px-5 py-3 w-full h-28 flex flex-col items-center">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">Watchs</h5>
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">Watches</h5>
             <Link href='/' className=" items-center px-3 py-2 text-base font-medium text-center text-white bg-gray-900 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 w-full flex justify-center ">
                 Shop Now 
                 <svg className="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
