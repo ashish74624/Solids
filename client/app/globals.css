@@ -7,6 +7,18 @@
         @apply content-[''] after:bg-red-500 after:block after:scale-x-0 hover:after:scale-x-100 after:transition-all after:delay-200  after:origin-left after:h-[2px] text-xl
     }
 
+    .pg{
+        @apply p-0 m-0
+    }
+
+    .pg li{
+        @apply mx-4
+    }
+
+    .pg li circle{
+        @apply fill-red-700 
+    }
+
     ::-webkit-scrollbar{
         width: 7px;
         height: 1px;
@@ -21,6 +33,4 @@
     }
 }
 
-.pagging-dot {
-    margin-left: 50px;
-}
+

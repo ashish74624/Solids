@@ -17,7 +17,7 @@ export default function Home() {
     </header>
     <main className={`bg-[#F3F4F7] ${sc.className} h-[90vh] w-screen overflow-x-hidden overflow-y-scroll `}>
       <Slider/>
-      {/* <Categories/> */}
+      <Categories/>
     </main>
    </>
   )
