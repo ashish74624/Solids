@@ -1,11 +1,4 @@
 import Link from "next/link"
-import { Josefin_Slab } from "next/font/google"
-
-const sc= Josefin_Slab({
-  subsets:['latin'],
-  weight: ['600'],
-})
-
 
 export default function Navbar() {
   return (

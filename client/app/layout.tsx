@@ -1,8 +1,13 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import Navbar from './components/Navbar'
+import { Josefin_Slab } from "next/font/google"
 
-const inter = Inter({ subsets: ['latin'] })
+const sc= Josefin_Slab({
+  subsets:['latin'],
+  weight: ['600'],
+})
+
 
 export const metadata: Metadata = {
   title: 'Ecommerce',
@@ -16,7 +21,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${sc.className} bg-[#F3F4F7]`}>
+        <header>
+          <Navbar/>
+        </header>
+        {children}
+      </body>
     </html>
   )
 }

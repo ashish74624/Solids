@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import Carousel, { PagingDots }  from "nuka-carousel"
+import Carousel from "nuka-carousel"
 import {
   renderCenterLeftControls,
   renderCenterRightControls,
