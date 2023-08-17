@@ -7,7 +7,7 @@ export const renderCenterLeftControls = ({
   previousSlide,
 }:any) => (
   <button
-    className='w-14 h-14 bg-gray-800/60 rounded-full pl-1 ml-1 mb-5'
+    className='w-11 h-11 bg-gray-800/60 rounded-full pl-1 ml-1 mb-5'
     disabled={previousDisabled}
     onClick={previousSlide}
     aria-label="Go to previous slide"
@@ -18,7 +18,7 @@ export const renderCenterLeftControls = ({
 
 export const renderCenterRightControls = ({ nextDisabled, nextSlide }:any) => (
   <button
-  className='w-14 h-14 bg-gray-800/60 rounded-full pl-2 mr-1 mb-5 '
+  className='w-11 h-11 bg-gray-800/60 rounded-full pl-2 mr-1 mb-5 '
     disabled={nextDisabled}
     onClick={nextSlide}
     aria-label="Go to next slide"
