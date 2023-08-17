@@ -17,9 +17,9 @@
     "eslint-config-next": "13.4.12",
     "framer-motion": "^10.15.1",
     "next": "13.4.12",
+    "nuka-carousel": "^6.0.3",
     "postcss": "8.4.27",
     "react-dom": "18.2.0",
-    "react-swipeable": "^7.0.1",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6"
   }
