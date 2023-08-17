@@ -15,7 +15,7 @@ export default function Home() {
     <header>
       <Navbar/>
     </header>
-    <main className={`bg-[#F3F4F7] ${sc.className} h-[90vh] w-screen overflow-x-hidden overflow-y-scroll `}>
+    <main className={`bg-[#F3F4F7] ${sc.className} h-[92vh] w-screen overflow-x-hidden overflow-y-scroll `}>
       <Slider/>
       <Categories/>
     </main>
