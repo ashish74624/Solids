@@ -10,7 +10,7 @@ const sc= Josefin_Slab({
 
 
 export const metadata: Metadata = {
-  title: 'Ecommerce',
+  title: 'Solids',
   description: 'Created by Ashish Kumar',
 }
 
