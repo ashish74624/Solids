@@ -4,7 +4,7 @@ import Link from 'next/link'
 export default function Card({id,img,title,rating,price}:any) {
   return (
     <Link href={`/product/${id}`}>      
-        <div className="w-96 min-h-[428px] h-max pb-2 bg-white border border-gray-200 rounded-lg shadow group">
+        <div className=" w-80 xl:w-96 min-h-[428px] h-max pb-2 bg-white border border-gray-200 rounded-lg shadow group">
             <div className="rounded-t-lg pb-2 h-72 overflow-hidden flex justify-center pt-1">
                 <img className="rounded-t-lg pb-2 h-72 overflow-hidden group-hover:scale-125 transition-all duration-500" src={img} alt="product image" />
             </div>
