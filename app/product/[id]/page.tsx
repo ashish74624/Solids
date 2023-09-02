@@ -1,5 +1,6 @@
 import Offer from '@/app/Icons/Offer';
 import Star from '@/app/Icons/Star';
+import AddtoCart from '@/app/components/AddtoCart';
 import React from 'react'
 
 type Params={
@@ -17,9 +18,7 @@ export default async function Product({params:{id}}:Params) {
         <div className=' w-full h-full bg-white'>
           <img className=' h-[500px] mx-auto w-[500px] mb-4 p-4 border mt-1' src={data.image} alt="" />
           <div id='buttons' className=' space-x-8 mx-auto w-max'>
-            <button className=' w-56 h-12 text-2xl text-white rounded-lg bg-orange-400 '>
-              Add to Cart
-            </button>
+            <AddtoCart id={id}/>
             <button className=' w-56 h-12 text-2xl text-white rounded-lg bg-red-500 '>
               Buy Now
             </button>

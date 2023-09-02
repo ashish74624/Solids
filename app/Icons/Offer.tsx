@@ -4,7 +4,7 @@ export default function Offer() {
   return (
     <>
       <svg className=' mr-2' version="1.1" id="OFFER" xmlns="http://www.w3.org/2000/svg" 
-	 width="14px" height="14px" viewBox="0 0 1800 1800" enable-background="new 0 0 1800 1800" >
+	 width="14px" height="14px" viewBox="0 0 1800 1800" enableBackground="new 0 0 1800 1800" >
 <g>
 	<path fill="#333333" d="M1799.344,899.996c0-88.462-95.547-165.006-276.3-221.355c-16.881-5.265-34.349-10.276-52.301-15.054
 		c9.318-16.072,18.118-31.96,26.339-47.619c87.966-167.659,101.403-289.341,38.854-351.9c-25.566-25.557-61.558-38.52-106.981-38.52
