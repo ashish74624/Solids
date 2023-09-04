@@ -4,9 +4,9 @@ const nextConfig = {
         remotePatterns: [
           {
             protocol: 'https',
-            hostname: 'image-get.vercel.app',
+            hostname: 'image-get.onrender.com',
             port: '',
-            pathname: '/Ecommerce/**',
+            pathname: '/ashishkumar74624@gmail.com/Ecommerce/**',
           },
         ],
       },

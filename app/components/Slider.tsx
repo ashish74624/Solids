@@ -4,7 +4,8 @@ import Carousel from "nuka-carousel"
 import {
   renderCenterLeftControls,
   renderCenterRightControls,
-} from './control'
+} from '@/app/components/control'
+import Image from 'next/image'
 
 export default function Slider() {
   return (
@@ -24,13 +25,13 @@ export default function Slider() {
     >
 
       <div>
-        <img className='w-screen h-[600px]' src="/1.webp" />
+        <Image className='w-screen h-[600px]' src="https://image-get.onrender.com/ashishkumar74624@gmail.com/Ecommerce/1.webp" alt='mens wear' width={1024} height={600} />
       </div>
       <div>
-        <img className='w-screen h-[600px]' src="/2.webp" />
+        <Image className='w-screen h-[600px]' src="https://image-get.onrender.com/ashishkumar74624@gmail.com/Ecommerce/3.webp" alt='womens wear' width={1024} height={600}  />
       </div>
       <div>
-        <img className='w-screen h-[600px]' src="/3.webp" />
+        <Image className='w-screen h-[600px]' src="https://image-get.onrender.com/ashishkumar74624@gmail.com/Ecommerce/2.webp" alt='watches' width={1024} height={600}  />
       </div>
     </Carousel>
     </>
