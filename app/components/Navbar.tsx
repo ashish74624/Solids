@@ -10,6 +10,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Noto_Sans_Osmanya } from "next/font/google"
+import { getKindeServerSession, RegisterLink , LoginLink , LogoutLink } from "@kinde-oss/kinde-auth-nextjs/server"
+import Cart from "../Icons/Cart"
 
 const nso= Noto_Sans_Osmanya({
   subsets:['latin'],
@@ -18,27 +20,56 @@ const nso= Noto_Sans_Osmanya({
 
 
 export default function Navbar() {
+  const {isAuthenticated , getUser } = getKindeServerSession()
+  const user = getUser();
+
   return (
     <>
         <header className= "w-screen h-14 bg-[#F3F4F7] z-50 font-serif ">
             <nav className=" w-[90vw] xl:w-[80vw] relative h-full flex items-end justify-between mx-auto">
                 <Link href={'/'} className="text-red-500 my-auto text-4xl ">Solids</Link>
-                <ul className="md:flex space-x-4 my-auto hidden">
+                <ul className={`md:flex space-x-4 my-auto hidden ${nso.className}`}>
                   <li>
                   <DropdownMenu>
-                    <DropdownMenuTrigger className={` flex text-xl h-10 w-[115px] items-center justify-between px-2 border ${nso.className}`}>
-                      <span className="text-3xl"><PiUserThin/></span>
-                       Sign in 
+                    <DropdownMenuTrigger className={` flex text-xl h-10 w-max items-center justify-between pr-2 border `}>
+                      <span className="text-3xl mx-2"><PiUserThin/></span>
+                       {!isAuthenticated()?(<>Sign in</>):(<>{user?.given_name?.[0]}{user?.family_name?.[0]}</>)} 
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className={`${nso.className}`}>
                       <DropdownMenuLabel>My Account</DropdownMenuLabel>
                       <DropdownMenuSeparator />
-                      <DropdownMenuItem>Profile</DropdownMenuItem>
-                      <DropdownMenuItem>Billing</DropdownMenuItem>
-                      <DropdownMenuItem>Team</DropdownMenuItem>
-                      <DropdownMenuItem>Subscription</DropdownMenuItem>
+                      { !isAuthenticated() ?
+                      (<>
+                        <DropdownMenuItem>
+                          <LoginLink>
+                            Sign in
+                          </LoginLink>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <RegisterLink>
+                            Sign Up
+                          </RegisterLink>
+                        </DropdownMenuItem>
+                      </>)
+                      :
+                      (<>
+                        <DropdownMenuItem className=" text-red-500">
+                          <LogoutLink>
+                            Log Out
+                          </LogoutLink>
+                        </DropdownMenuItem>
+                      </>)}
+                      
+                      <DropdownMenuItem>Orders</DropdownMenuItem>
+                      <DropdownMenuItem>Wishlist</DropdownMenuItem>
+                      {/* <DropdownMenuItem>Subscription</DropdownMenuItem> */}
                     </DropdownMenuContent>
                   </DropdownMenu>
+                  </li>
+                  <li>
+                    <Link className=" border w-max flex px-2 text-xl h-10 items-center" href={'/mycart'}>
+                      <Cart/> My Cart
+                    </Link>
                   </li>
                 </ul> 
                 <span className=" my-auto inline md:hidden">

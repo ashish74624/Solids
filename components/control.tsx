@@ -1,6 +1,6 @@
 import React from 'react';
-import Left from '../Icons/Left';
-import Right from '../Icons/Right';
+import Left from '../app/Icons/Left';
+import Right from '../app/Icons/Right';
 
 export const renderCenterLeftControls = ({
   previousDisabled,

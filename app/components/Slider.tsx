@@ -4,7 +4,7 @@ import Carousel from "nuka-carousel"
 import {
   renderCenterLeftControls,
   renderCenterRightControls,
-} from '@/app/components/control'
+} from '@/components/control'
 import Image from 'next/image'
 
 export default function Slider() {
