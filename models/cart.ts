@@ -2,7 +2,8 @@ import mongoose ,{Schema} from "mongoose";
 
 const cast = new Schema({
     email:{type:String , required:true},
-    product_id:{type:String , required:true}
+    product_id:{type:String , required:true},
+    quantity:{type:Number,required:true}
 }
 ,{collection:'cart'}
 );

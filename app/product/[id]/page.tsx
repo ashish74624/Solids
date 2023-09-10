@@ -2,6 +2,7 @@ import Offer from '@/app/Icons/Offer';
 import Star from '@/app/Icons/Star';
 import AddtoCart from '@/app/components/AddtoCart';
 import React from 'react'
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 
 type Params={
   params:{
@@ -10,15 +11,19 @@ type Params={
 }
 
 export default async function Product({params:{id}}:Params) {
+  const {isAuthenticated,getUser} = getKindeServerSession();
+  const user = getUser();
   const res = await fetch(`https://fakestoreapi.com/products/${id}`);
   const data = await res.json();
+
   return (
     <>
       <section className=' bg-[#F3F4F7] grid grid-cols-2 w-[95vw] mx-auto h-[90vh]'>
         <div className=' w-full h-full bg-white'>
           <img className=' h-[500px] mx-auto w-[500px] mb-4 p-4 border mt-1' src={data.image} alt="" />
           <div id='buttons' className=' space-x-8 mx-auto w-max'>
-            <AddtoCart id={id}/>
+            {!isAuthenticated()?<AddtoCart id={id} isUser={false}/>:<AddtoCart id={id} isUser={true} userEmail={user.email as string}/>}
+            
             <button className=' w-56 h-12 text-2xl text-white rounded-lg bg-red-500 '>
               Buy Now
             </button>

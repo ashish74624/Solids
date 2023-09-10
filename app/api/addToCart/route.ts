@@ -7,12 +7,19 @@ export async function GET (request:Request){
 }
 
 export async function POST(request:Request) {
-    let {id} = await request.json();
+    let {id,user} = await request.json();
+    // console.log(user)
     await connectMongoDB();
+    const check = await cartModel.findOne({product_id : id,email:user})
+    if(check){
+        // await cartModel.updateOne({"product_id":id},{$inc:{quantity:-1}})
+        return NextResponse.json({done:false,msg:'Item already Exists in your cart'},{status:200})
+    }
     const cart = await cartModel.create({
         product_id : id,
-        email:'ashish@gmail.com'
+        email:user,
+        quantity:1
     })
     await cart.save();
-    return NextResponse.json({msg:id})
+    return NextResponse.json({done:true,msg:"Item added"},{status:200})
 }

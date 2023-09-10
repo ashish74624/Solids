@@ -31,7 +31,7 @@ export default function Card({id,img,title,rating,price}:any) {
                 </div>
                 <div className="flex items-center justify-between">
                     <span className="text-3xl font-bold text-gray-900 ">${price}</span>
-                    <a href="#" className="text-white bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add to cart</a>
+                    <button className="text-white bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add to Wishlist</button>
                 </div>
             </div>
         </div>
