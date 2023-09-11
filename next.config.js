@@ -8,6 +8,12 @@ const nextConfig = {
             port: '',
             pathname: '/ashishkumar74624@gmail.com/Ecommerce/**',
           },
+          {
+            protocol:'https',
+            hostname:"placehold.co",
+            port:'',
+            pathname:"/**"
+          }
         ],
       },
 }
