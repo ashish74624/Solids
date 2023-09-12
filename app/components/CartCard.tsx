@@ -5,8 +5,8 @@ export default function CartCard() {
     <>
      <section className=' w-full h-56 flex p-4 border-b border-black'>
         <div className='w-36'>
-            <div className='h-36 w-36 bg-red-300'>
-                <Image className=' h-36 w-36' height={200} width={200} src="/4.jpg" alt="Img" />
+            <div className='h-36 w-36 rounded-lg'>
+                <Image className='h-36 w-36 rounded-lg' height={200} width={200} src="/4.jpg" alt="Img" />
             </div>
             <span className='flex mt-2 space-x-2 mx-auto w-max'>
                 <button className='w-8 h-8 text-6xl grid place-content-center font-thin rounded-full border-black border pb-2 bg-gray-300'>
