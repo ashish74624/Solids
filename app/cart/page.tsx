@@ -39,7 +39,7 @@ export default async function Cart() {
             </button>
           </div>  
           </div>
-          <div className='z-[2] sticky h-max bottom-0 w-96 top-10 bg-white divide-y px-5 py-3'>
+          <div className='z-[2] sticky h-max bottom-0 w-96 top-10 bg-white divide-y px-5 py-3 rounded-lg'>
             <div className='text-gray-400 text-2xl'>PRICE DETAILS</div>
               <ul className='w-full space-y-4 text-xl pt-2'>
                 <li className='w-full flex justify-between'>

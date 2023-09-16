@@ -71,7 +71,7 @@ export default function Navbar() {
                   </DropdownMenu>
                   </li>
                   <li>
-                    <Link className=" border w-max flex px-2 text-xl h-10 items-center" href={'/mycart'}>
+                    <Link className=" border w-max flex px-2 text-xl h-10 items-center" href={'/cart'}>
                       <Cart/> My Cart
                     </Link>
                   </li>
