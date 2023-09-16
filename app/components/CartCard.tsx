@@ -1,12 +1,14 @@
 import React from 'react'
 import Image from 'next/image'
-export default function CartCard() {
+
+
+export default function CartCard({title,image,price}:any) {
   return (
     <>
      <section className=' w-full h-56 flex p-4 border-b border-black'>
         <div className='w-36'>
             <div className='h-36 w-36 rounded-lg'>
-                <Image className='h-36 w-36 rounded-lg' height={200} width={200} src="/4.jpg" alt="Img" />
+                <Image className='h-36 w-36 rounded-lg' height={200} width={200} src={image} alt="Img" />
             </div>
             <span className='flex mt-2 space-x-2 mx-auto w-max'>
                 <button className='w-8 h-8 text-6xl grid place-content-center font-thin rounded-full border-black border pb-2 bg-gray-300'>
@@ -20,11 +22,11 @@ export default function CartCard() {
                 </button>
             </span>
         </div>
-        <div className=' ml-4'>
+        <div className=' ml-8'>
             <h3 className=' text-xl'>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, sunt?
+                {title}
             </h3>
-            <p className=' text-2xl'>Price: </p>
+            <p className=' text-2xl'>Price: ${price}</p>
         </div>
      </section> 
     </>

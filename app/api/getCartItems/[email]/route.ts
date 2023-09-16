@@ -4,19 +4,24 @@ import { NextResponse } from "next/server";
 
 type Props = {
     params: {
-        email: string
+        email: any
     }
 }
 
 export async function GET(request:Request,{ params: { email } }: Props) {
-    const url = new URL(request.url)
-    console.log(email)
+    // console.log(email)
     try{
         connectMongoDB();
-        const cart = await cartModel.find({email:email.toString()});
-        console.log(cart)
-        return NextResponse.json({cart:cart,msg:"Done"});
+        const cart = await cartModel.find({email:email});
+        let products=[]
+        for(const product of cart){
+            const res = await fetch(`https://fakestoreapi.com/products/${product.product_id}`)
+            const data = await res.json();
+            products.push(data);
+        }
+        return NextResponse.json({cart:products,msg:"Done"});
     }catch{
+        console.log("Error in fetching Cart")
         return NextResponse.json({msg:"Couldn't get Cart Data"})
     }
 }

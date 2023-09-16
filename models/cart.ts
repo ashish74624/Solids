@@ -1,13 +1,13 @@
 import mongoose ,{Schema} from "mongoose";
 
-const cast = new Schema({
-    email:{type:String , required:true},
-    product_id:{type:String , required:true},
-    quantity:{type:Number,required:true}
+const cart = new Schema({
+    email:{type:String},
+    product_id:{type:String },
+    quantity:{type:Number}
 }
 ,{collection:'cart'}
 );
 
-const model = mongoose.model('cast',cast);
+const model = mongoose.models.cart || mongoose.model('cart',cart);
 
 export default model;
