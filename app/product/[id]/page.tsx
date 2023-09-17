@@ -3,6 +3,7 @@ import Star from '@/app/Icons/Star';
 import AddtoCart from '@/app/components/AddtoCart';
 import React from 'react'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
+import { Toaster } from 'react-hot-toast';
 
 type Params={
   params:{
@@ -62,6 +63,10 @@ export default async function Product({params:{id}}:Params) {
           </div>
         </div>
       </section>
+      <Toaster position="bottom-right" 
+        toastOptions={{
+        className :' bg-blue-400/20 w-64 text-blue-700 rounded-full border-2 border-blue-700 h-[70px] grid place-content-center'
+    }}/>
     </>
   )
 }

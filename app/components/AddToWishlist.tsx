@@ -14,7 +14,9 @@ const addToWishlist=async(id:string,email:string)=>{
                 id:id,
                 email : email.toString(),
             })
-        })
+        });
+        const data = await res.json();
+        toast(data.msg)
     }
     catch{}
 }

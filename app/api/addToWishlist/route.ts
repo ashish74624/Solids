@@ -16,5 +16,5 @@ export async function POST(request:Request){
         email: email,
     });
     await wish.save();
-    return NextResponse.json({done:true,msg:"Item added"},{status:200})
+    return NextResponse.json({done:true,msg:"Item added to Wishlist"},{status:200})
 }

@@ -20,5 +20,5 @@ export async function POST(request:Request) {
         quantity:1
     })
     await cart.save();
-    return NextResponse.json({done:true,msg:"Item added"},{status:200})
+    return NextResponse.json({done:true,msg:"Item added to the Cart"},{status:200})
 }
