@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 import toast, { Toaster } from 'react-hot-toast';
-import AskToLogin from '../toast/AskToLogin';
 
 const addToWishlist=async(id:string,email:string)=>{
     const backend = process.env.NODE_ENV==='production'?process.env.BACKEND :'http://localhost:3000';
