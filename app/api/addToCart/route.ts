@@ -8,7 +8,6 @@ export async function GET (request:Request){
 
 export async function POST(request:Request) {
     let {id,user} = await request.json();
-    // console.log(user)
     await connectMongoDB();
     const check = await cartModel.findOne({product_id : id,email:user})
     if(check){

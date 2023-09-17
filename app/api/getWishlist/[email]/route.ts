@@ -12,7 +12,6 @@ export async function GET(request:Request,{ params: { email } }: Props) {
     try{
         connectMongoDB();
         const wishlist = await wishModel.find({email:email});
-        console.log(wishlist)
         let products=[]
         for(const product of wishlist){
             const res = await fetch(`https://fakestoreapi.com/products/${product.product_id}`)

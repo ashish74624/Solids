@@ -9,7 +9,6 @@ type Props = {
 }
 
 export async function GET(request:Request,{ params: { email } }: Props) {
-    // console.log(email)
     try{
         connectMongoDB();
         const cart = await cartModel.find({email:email});
