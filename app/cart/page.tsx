@@ -7,12 +7,14 @@ export default async function Cart() {
   const {isAuthenticated,getUser} = getKindeServerSession();
   const user = getUser();
   const backend= process.env.NODE_ENV==='production' ? process.env.BACKEND : 'http://localhost:3000'
-  const res = await fetch(`${backend}/api/getCartItems/${user?.email}`);
-  const data:any = await res.json();
+  const res = !isAuthenticated() ? undefined : await fetch(`${backend}/api/getCartItems/${user?.email}`);
+  const data:any = await res?.json();
   const cart= data?.cart
   let totalPrice=0
-  for(const item of cart){
-    totalPrice+=item.price;
+  if(cart){
+    for(const item of cart){
+      totalPrice+=item.price;
+    }
   }
   return (
     <>
