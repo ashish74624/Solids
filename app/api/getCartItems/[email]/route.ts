@@ -21,7 +21,6 @@ export async function GET(request:Request,{ params: { email } }: Props) {
         }
         return NextResponse.json({cart:products,msg:"Done"});
     }catch{
-        console.log("Error in fetching Cart")
         return NextResponse.json({msg:"Couldn't get Cart Data"})
     }
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { getKindeServerSession , LoginLink , RegisterLink } from '@kinde-oss/kinde-auth-nextjs/server'
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import UnAuthCart from '../components/UnAuthCart';
 import CartCard from '../components/CartCard';
 

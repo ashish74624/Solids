@@ -65,7 +65,11 @@ export default function Navbar() {
                           Orders
                         </Link>
                       </DropdownMenuItem>
-                      <DropdownMenuItem>Wishlist</DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <Link href={'/wishlist'}>
+                          Wishlist
+                        </Link>
+                      </DropdownMenuItem>
                       {/* <DropdownMenuItem>Subscription</DropdownMenuItem> */}
                     </DropdownMenuContent>
                   </DropdownMenu>
