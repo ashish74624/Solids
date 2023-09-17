@@ -41,7 +41,7 @@ const addToCart=async(id:string,user:string)=>{
 }
 
 const askAuth=async()=>{
-  toast.custom(<><AskToLogin/></>)
+  toast("Please Login To Continue")
 }
 
 interface ID {
@@ -57,7 +57,10 @@ export default function AddtoCart({id,userEmail,isUser}:ID) {
       <button onClick={()=>{ isUser? addToCart(id,userEmail as string): askAuth()}} className=' w-56 h-12 text-2xl text-white rounded-lg bg-red-500 '>
           Add to Cart
       </button> 
-    <Toaster position="bottom-right" />
+    <Toaster position="bottom-right" 
+    toastOptions={{
+      className :' bg-blue-400/20 w-64 text-blue-700 rounded-full border-2 border-blue-700 h-[70px] grid place-content-center'
+    }}/>
     </>
   )
 }
