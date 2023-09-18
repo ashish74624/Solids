@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${sc.className} bg-[#F3F4F7]`}>
+      <body className={`${sc.className} bg-[#F3F4F7] h-screen w-screen overflow-x-hidden overflow-y-scroll`}>
         <header>
           <Navbar/>
         </header>

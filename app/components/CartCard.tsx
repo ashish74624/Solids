@@ -1,8 +1,9 @@
 import React from 'react'
 import Image from 'next/image'
+import RemoveCartItem from './RemoveCartItem'
 
 
-export default function CartCard({title,image,price}:any) {
+export default function CartCard({title,image,price,id,email}:any) {
   return (
     <>
      <section className='w-full h-56 flex p-4 border-b border-black'>
@@ -22,10 +23,11 @@ export default function CartCard({title,image,price}:any) {
                 </button>
             </span>
         </div>
-        <div className=' ml-8'>
-            <h3 className=' text-xl'>
-                {title}
-            </h3>
+        <div className='w-full ml-8'>
+            <div className='w-full text-xl flex justify-between'>
+                <h3>{title}</h3> 
+                <RemoveCartItem id={id} email={email}/>
+            </div>
             <p className=' text-2xl'>Price: ${price}</p>
         </div>
      </section> 

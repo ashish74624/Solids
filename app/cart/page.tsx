@@ -2,6 +2,7 @@ import React from 'react'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import UnAuthCart from '../components/UnAuthCart';
 import CartCard from '../components/CartCard';
+import Link from 'next/link';
 
 export default async function Cart() {
   const {isAuthenticated,getUser} = getKindeServerSession();
@@ -16,6 +17,21 @@ export default async function Cart() {
       totalPrice+=item.price;
     }
   }
+
+  if(cart.length<=0){
+    return (
+      <>
+        <section className='w-[90vw] mx-auto bg-white'>
+          <div className='w-full border-b-2 border-black px-4 pt-4 pb-2 text-2xl'>My Cart</div>
+          <div className=' w-full h-96 flex flex-col justify-center items-center'>
+            <p className='text-2xl'>Your Cart is Empty</p>
+            <Link className='hover:underline' href={'/'}>Continue Shoping...</Link>
+          </div>
+        </section>
+      </>
+    )
+  }
+
   return (
     <>
      {!isAuthenticated()
@@ -31,8 +47,8 @@ export default async function Cart() {
             {
               cart.map((cart:any)=>
               (
-                <div key={cart?._id}>
-                  <CartCard title={cart?.title} image={cart?.image} price={cart?.price}/>
+                <div key={cart?.id}>
+                  <CartCard id={cart?.id} email={user?.email} title={cart?.title} image={cart?.image} price={cart?.price}/>
                 </div>
               ))
             }

@@ -10,7 +10,7 @@ type Props = {
 
 export async function GET(request:Request,{ params: { email } }: Props) {
     try{
-        connectMongoDB();
+        await connectMongoDB();
         const wishlist = await wishModel.find({email:email});
         let products=[]
         for(const product of wishlist){
@@ -28,7 +28,7 @@ export async function GET(request:Request,{ params: { email } }: Props) {
 export async function DELETE(request:Request,{ params: { email } }: Props){
     const { id } = await request.json();
     try{
-        connectMongoDB();
+        await connectMongoDB();
         const wishlist = await wishModel.findOneAndDelete({email:email , product_id:id})
         return NextResponse.json({msg:"Removed Item"});
     }
