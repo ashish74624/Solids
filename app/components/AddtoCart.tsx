@@ -3,7 +3,6 @@ import React from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 
 
-
 const addToCart=async(id:string,user:string)=>{
     const backend = process.env.NODE_ENV ==='production' ? process.env.BACKEND :'http://localhost:3000';
     const res = await fetch(`${backend}/api/addToCart`,{
@@ -31,15 +30,14 @@ interface ID {
 }
 
 export default function AddtoCart({id,userEmail,isUser}:ID) {
-
   return (
     <>
-      <button onClick={()=>{ isUser? addToCart(id,userEmail as string): askAuth()}} className=' w-56 h-12 text-2xl text-white rounded-lg bg-red-500 '>
+      <button onClick={()=>{ isUser? addToCart(id,userEmail as string): askAuth()}} className='w-48 h-12 text-2xl text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300'>
           Add to Cart
       </button> 
-    <Toaster position="bottom-right" 
-    toastOptions={{
-      className :' bg-blue-400/20 w-64 text-blue-700 rounded-full border-2 border-blue-700 h-[70px] grid place-content-center'
+      <Toaster position="bottom-right" 
+        toastOptions={{
+          className :' bg-blue-400/20 w-64 text-blue-700 rounded-full border-2 border-blue-700 h-[70px] grid place-content-center'
     }}/>
     </>
   )

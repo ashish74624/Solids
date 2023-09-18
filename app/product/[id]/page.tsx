@@ -22,10 +22,10 @@ export default async function Product({params:{id}}:Params) {
       <section className=' bg-[#F3F4F7] grid grid-cols-2 w-[95vw] mx-auto h-[90vh]'>
         <div className=' w-full h-full bg-white'>
           <img className=' h-[500px] mx-auto w-[500px] mb-4 p-4 border mt-1' src={data.image} alt="" />
-          <div id='buttons' className=' space-x-8 mx-auto w-max'>
+          <div id='buttons' className=' space-x-4 mx-auto w-max'>
             {!isAuthenticated()?<AddtoCart id={id} isUser={false}/>:<AddtoCart id={id} isUser={true} userEmail={user.email as string}/>}
             
-            <button className=' w-56 h-12 text-2xl text-white rounded-lg bg-red-500 '>
+            <button className=' w-48 h-12 text-2xl text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 '>
               Buy Now
             </button>
           </div>
