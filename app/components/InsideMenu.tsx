@@ -1,35 +1,31 @@
-import Link from "next/link"
-import MenuButton from "./MenuButton"
+import React from 'react'
+import { getKindeServerSession, RegisterLink , LoginLink , LogoutLink } from "@kinde-oss/kinde-auth-nextjs/server"
+import Link from 'next/link';
+import Cart from '../Icons/Cart';
 import {PiUserThin} from  "react-icons/pi"
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+  } from "@/components/ui/dropdown-menu"
 import { Noto_Sans_Osmanya } from "next/font/google"
-import { getKindeServerSession, RegisterLink , LoginLink , LogoutLink } from "@kinde-oss/kinde-auth-nextjs/server"
-import Cart from "../Icons/Cart"
 
 const nso= Noto_Sans_Osmanya({
-  subsets:['latin'],
-  weight:['400']
-})
+    subsets:['latin'],
+    weight:['400']
+});
 
 
-export default function Navbar() {
+export default function InsideMenu() {
   const {isAuthenticated , getUser } = getKindeServerSession()
   const user = getUser();
-
   return (
     <>
-        <header className= "w-screen h-14 bg-[#F3F4F7] z-50 font-serif ">
-            <nav className=" w-[90vw] xl:w-[80vw] relative h-full flex items-end justify-between mx-auto">
-                <Link href={'/'} className="text-red-500 my-auto text-4xl ">Solids</Link>
-                <ul className={`flex space-x-4 my-auto  ${nso.className}`}>
-                  <li>
+    <ul className="flex space-x-2 px-2">
+      <li>
                   <DropdownMenu>
                     <DropdownMenuTrigger className={` flex text-xl h-10 w-max items-center justify-between pr-2 border `}>
                       <span className="text-3xl mx-2"><PiUserThin/></span>
@@ -70,23 +66,16 @@ export default function Navbar() {
                           Wishlist
                         </Link>
                       </DropdownMenuItem>
-                      <DropdownMenuItem className="md:hidden inline-block">
-                        <Link href={'/cart'}>
-                          My Cart
-                        </Link>
-                      </DropdownMenuItem>
                       {/* <DropdownMenuItem>Subscription</DropdownMenuItem> */}
                     </DropdownMenuContent>
                   </DropdownMenu>
                   </li>
-                  <li className="md:inline-block hidden">
+                  <li>
                     <Link className=" border w-max flex px-2 text-xl h-10 items-center" href={'/cart'}>
                       <Cart/> My Cart
                     </Link>
                   </li>
-                </ul> 
-            </nav>
-        </header> 
+                  </ul>          
     </>
   )
 }

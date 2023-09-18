@@ -1,9 +1,11 @@
 'use client'
 import React,{useState} from 'react';
-import Link from 'next/link';
 import { motion, AnimatePresence } from "framer-motion"
+import InsideMenu from './InsideMenu';
+
 
 const MenuButton: React.FC = () => {
+
   const [menu,setMenu] = useState(false)
   const toggleMenu = () => {
     const menuButton = document.getElementById("menu") as HTMLButtonElement;
@@ -32,18 +34,8 @@ const MenuButton: React.FC = () => {
       <AnimatePresence>
         <motion.div className=' w-screen h-16 bg-white fixed top-14 left-0 right-0 z-50 flex justify-center items-center rounded-b-xl shadow' 
         initial={{y:-300}} animate={{y:0}} exit={{y:-300}}
-        >
-        <ul className="flex space-x-2 px-2">
-                  <Link href={'/men'} className=" hover-btn" >
-                    <li >Men&apos;s Clothing</li>
-                  </Link>
-                  <Link href={'/women'} className=" hover-btn" >
-                    <li >Women&apos;s Clothing</li>
-                  </Link>
-                  <Link href={'/jewel'} className=" hover-btn" >
-                    <li >Jewelery</li>
-                  </Link>
-                </ul> 
+        >          
+            
         </motion.div>
       </AnimatePresence>
       )}
