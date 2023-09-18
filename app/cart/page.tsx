@@ -27,6 +27,7 @@ export default async function Cart() {
       <section className='relative w-[90vw] mx-auto '>
         <div className='flex flex-row w-full'>
           <div className='overflow-visible w-3/4 bg-white rounded-lg mr-2'>
+            <p className=' w-full border-b-2 border-black px-4 pt-4 pb-2 text-2xl'>My Cart</p>
             {
               cart.map((cart:any)=>
               (
