@@ -18,7 +18,6 @@ export async function GET(request:Request,{ params: { email } }: Props) {
             const data = await res.json();
             products.push(data);
         }
-        console.log(products)
         return NextResponse.json({list:products,msg:"Done"});
     }
     catch{
