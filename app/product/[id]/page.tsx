@@ -4,6 +4,7 @@ import AddtoCart from '@/app/components/AddtoCart';
 import React from 'react'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { Toaster } from 'react-hot-toast';
+import Image from 'next/image';
 
 type Params={
   params:{
@@ -19,19 +20,19 @@ export default async function Product({params:{id}}:Params) {
 
   return (
     <>
-      <section className=' bg-[#F3F4F7] grid grid-cols-2 w-[95vw] mx-auto h-[90vh]'>
+      <section className='bg-[#F3F4F7] flex flex-col md:grid grid-cols-2 w-[95vw] mx-auto h-[90vh]'>
         <div className=' w-full h-full bg-white'>
-          <img className=' h-[500px] mx-auto w-[500px] mb-4 p-4 border mt-1' src={data.image} alt="" />
+          <Image className=' h-[500px] mx-auto w-[500px] mb-4 p-4 border mt-1' src={data.image} alt="Product Image" height={500} width={500} />
           <div id='buttons' className=' space-x-4 mx-auto w-max'>
             {!isAuthenticated()?<AddtoCart id={id} isUser={false}/>:<AddtoCart id={id} isUser={true} userEmail={user.email as string}/>}
             
-            <button className=' w-48 h-12 text-2xl text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 '>
+            <button className='w-36 md:w-40 h-10 lg:w-48 md:h-12 text-xl md:text-2xl text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 '>
               Buy Now
             </button>
           </div>
         </div>
-        <div className=' w-full h-full bg-white p-10'>
-          <p className=' text-3xl'>{data?.title}</p>
+        <div className=' w-full h-full bg-white p-2 md:p-2 lg:p-10'>
+          <p className='text-2xl md:text-3xl'>{data?.title}</p>
           <div id="rating" className=' mt-2 flex'>
             <span className=' rounded-lg text-sm bg-emerald-600 px-2 py-[0.1rem] text-white w-max flex'>
             {data.rating.rate}
@@ -40,19 +41,19 @@ export default async function Product({params:{id}}:Params) {
             <p className=' ml-2 text-gray-600'> {data.rating.count} Ratings and {(Math.random() * 60).toFixed()}  Reviews </p>
           </div>
           <h3 id="price" className=' mt-3 text-3xl'>$ {data.price}</h3>
-          <div id='Offers' className=' mt-3'>
+          <div id='Offers' className=' mt-3 text-sm'>
             <h4 className='text-xl'>Availale Offers</h4>
-            <h5 className=' flex h-6 items-center'>
-              <Offer/> Bank Offer: 5% Cashback on Axis Bank Card
+            <h5 className=' flex h-10 lg:h-6 items-center'>
+              <span className='md:inline hidden'><Offer/></span> Bank Offer: 5% Cashback on Axis Bank Card
             </h5>
-            <h5 className=' flex h-6 items-center'>
-              <Offer/> Bank Offer: 4% Off On HDFC Bank Credit Card Transactions
+            <h5 className=' flex h-10 lg:h-6 items-center'>
+              <span className='md:inline hidden'><Offer/></span> Bank Offer: 4% Off On HDFC Bank Credit Card Transactions
             </h5>
-            <h5 className=' flex h-6 items-center'>
-              <Offer/> Bank Offer: 7% Off On HDFC Bank Debit Card EMI Transactions
+            <h5 className=' flex h-10 lg:h-6 items-center'>
+              <span className='md:inline hidden'><Offer/></span> Bank Offer: 7% Off On HDFC Bank Debit Card EMI Transactions
             </h5>
-            <h5 className=' flex h-6 items-center'>
-              <Offer/> Special Offer: Get extra 10% off (price inclusive of cashback/coupon)
+            <h5 className=' flex h-10 lg:h-6 items-center'>
+              <span className='md:inline hidden'><Offer/></span> Special Offer: Get extra 10% off (price inclusive of cashback/coupon)
             </h5>
           </div>
           <div id="desp" className=' mt-3'>

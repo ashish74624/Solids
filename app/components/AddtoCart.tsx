@@ -32,7 +32,7 @@ interface ID {
 export default function AddtoCart({id,userEmail,isUser}:ID) {
   return (
     <>
-      <button onClick={()=>{ isUser? addToCart(id,userEmail as string): askAuth()}} className='w-48 h-12 text-2xl text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300'>
+      <button onClick={()=>{ isUser? addToCart(id,userEmail as string): askAuth()}} className='w-36 md:w-40 h-10 lg:w-48 md:h-12 text-xl md:text-2xl text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300'>
           Add to Cart
       </button> 
       <Toaster position="bottom-right" 
