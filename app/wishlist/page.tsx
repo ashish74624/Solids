@@ -25,7 +25,7 @@ export default async function page() {
       {
         product.map((item:any)=>(
           <div key={item?._id}>
-            <WishListCard title={item?.title} id={item?.id} image={item?.image}/>
+            <WishListCard email={user?.email} title={item?.title} id={item?.id} image={item?.image} price={item?.price}/>
           </div>
         ))
       }

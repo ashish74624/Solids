@@ -18,6 +18,7 @@ export async function GET(request:Request,{ params: { email } }: Props) {
             const data = await res.json();
             products.push(data);
         }
+        console.log(products)
         return NextResponse.json({list:products,msg:"Done"});
     }
     catch{
@@ -30,8 +31,7 @@ export async function DELETE(request:Request,{ params: { email } }: Props){
     try{
         connectMongoDB();
         const wishlist = await wishModel.findOneAndDelete({email:email , product_id:id})
-        await wishlist.save();
-        return NextResponse.json({msg:"Done"});
+        return NextResponse.json({msg:"Removed Item"});
     }
     catch{
         return NextResponse.json({msg:"Couldn't Delete Data"})
