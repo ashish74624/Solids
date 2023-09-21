@@ -13,14 +13,14 @@ export default async function page() {
   });
   const data:any = await res?.json();
   const product= data?.list
-  if(product.length<=0){
+  if(isAuthenticated() && product.length<=0){
     return(
       <>
         <div>
-          <div className='text-2xl text-slate-900 p-4 bg-white mx-auto w-[75vw] rounded-full shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] px-8 mb-4 '>
+          <div className='text-2xl text-slate-900 p-4 bg-white mx-auto w-[95vw] lg:w-[75vw] rounded-full shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] px-8 mb-4 '>
             My Wishlist
           </div>
-          <div className=' bg-white mx-auto w-[75vw] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] flex flex-col justify-center items-center h-96 rounded-3xl'>
+          <div className=' bg-white mx-auto w-[95vw] lg:w-[75vw] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] flex flex-col justify-center items-center h-96 rounded-3xl'>
             <p className="text-xl">Your wish list is empty</p>
             <p className='hover:underline'><Link href='/'>Continue Shoping...</Link></p>
           </div>
@@ -36,7 +36,7 @@ export default async function page() {
      :
      (
      <>
-     <section className='text-2xl text-slate-900 p-4 bg-white mx-auto w-[75vw] rounded-full shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] px-8 mb-4'>
+     <section className='text-2xl text-slate-900 p-4 bg-white mx-auto w-[95vw] lg:w-[75vw] rounded-full shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] px-8 mb-4'>
         My Wishlist
      </section>
      <section className=' space-y-4'>
