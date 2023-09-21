@@ -8,7 +8,7 @@ export default async function Cart() {
   const {isAuthenticated,getUser} = getKindeServerSession();
   const user = getUser();
   const backend= process.env.NODE_ENV==='production' ? process.env.BACKEND : 'http://localhost:3000'
-  const res = !isAuthenticated() ? undefined : await fetch(`${backend}/api/getCartItems/${user?.email}`);
+  const res = !isAuthenticated() ? undefined : await fetch(`${backend}/api/getCartItems/${user?.email}`,{cache:'no-cache'});
   const data:any = await res?.json();
   const cart= data?.cart
   let totalPrice=0
@@ -18,7 +18,7 @@ export default async function Cart() {
     }
   }
 
-  if(cart.length<=0){
+  if(isAuthenticated() && cart.length<=0){
     return (
       <>
         <section className='w-[90vw] mx-auto bg-white'>
@@ -41,8 +41,8 @@ export default async function Cart() {
      (
      <>
       <section className='relative w-[90vw] mx-auto '>
-        <div className='flex flex-row w-full'>
-          <div className='overflow-visible w-3/4 bg-white rounded-lg mr-2'>
+        <div className='flex flex-col lg:flex-row w-full'>
+          <div className='overflow-visible w-full lg:w-3/4 bg-white rounded-lg mr-2'>
             <p className=' w-full border-b-2 border-black px-4 pt-4 pb-2 text-2xl'>My Cart</p>
             {
               cart.map((cart:any)=>
@@ -52,13 +52,9 @@ export default async function Cart() {
                 </div>
               ))
             }
-          <div className='flex items-center justify-end pr-8 w-full h-16'>
-            <button className=' px-6 py-2 rounded-lg text-white bg-red-500 text-lg font-bold'>
-              Place Order
-            </button>
-          </div>  
+          <div className='hidden lg:flex items-center justify-end pr-8 w-full h-16'></div>  
           </div>
-          <div className='z-[2] sticky h-max bottom-0 w-96 top-10 bg-white divide-y px-5 py-3 rounded-lg'>
+          <div className='z-[2] relative lg:sticky h-max lg:bottom-0 w-full lg:mt-0 mt-4 lg:w-96 lg:top-10 bg-white divide-y px-5 py-3 rounded-lg'>
             <div className='text-gray-400 text-2xl'>PRICE DETAILS</div>
               <ul className='w-full space-y-4 text-xl pt-2'>
                 <li className='w-full flex justify-between'>
@@ -77,6 +73,11 @@ export default async function Cart() {
               <div className='w-full flex justify-between text-2xl font-bold pt-4'>
                 <span>TOTAL AMOUNT</span>
                 {totalPrice-10}
+              </div>
+              <div className='mt-4'>
+                <button className=' w-full h-10 md:h-11 text-xl text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300'>
+                  Place Order
+                </button> 
               </div>
           </div>
         </div>

@@ -1,34 +1,41 @@
 import React from 'react'
 import Image from 'next/image'
 import RemoveCartItem from './RemoveCartItem'
-
+import RemoveCartItem2 from './RemoveCartItem2'
+import { AiOutlineDown } from "react-icons/ai";
+import { AiOutlineUp } from "react-icons/ai";
 
 export default function CartCard({title,image,price,id,email}:any) {
   return (
     <>
-     <section className='w-full h-56 flex p-4 border-b border-black'>
-        <div className='w-36'>
-            <div className='h-36 w-36 rounded-lg'>
-                <Image className='h-36 w-36 rounded-lg' height={200} width={200} src={image} alt="Img" />
+     <section className='relative w-full h-32 md:h-56 flex p-1 pt-2 md:pt-4 md:p-4 border-b border-black'>
+        <div className='w-20 md:w-36 flex flex-col'>
+            <div className='h-20 w-20 md:h-36 md:w-36 rounded-lg'>
+                <Image className=' h-20 w-20 md:h-36 md:w-36 rounded-lg' height={200} width={200} src={image} alt="Img" />
             </div>
-            <span className='flex mt-2 space-x-2 mx-auto w-max'>
-                <button className='w-8 h-8 text-6xl grid place-content-center font-thin rounded-full border-black border pb-2 bg-gray-300'>
-                    -
+            <div className='flex-grow'></div>
+            <span className='w-20 md:w-36 h-6 md:h-8 grid grid-cols-3 border border-gray-900 rounded overflow-hidden'>
+                <button className='bg-gray-900 hover:bg-gray-800 grid place-content-center text-base md:text-xl text-white h-full w-full md:pb-0 '>
+                    <AiOutlineDown />
                 </button>
-                <span className=' w-12 h-8 border border-black grid place-content-center bg-gray-200'>
-                    1
-                </span>
-                <button className='w-8 h-8 text-4xl grid place-content-center font-thin rounded-full border-black border bg-gray-300'>
-                    +
+                <span className='grid place-content-center text-base md:text-2xl'>1</span>
+                <button className='bg-gray-900 hover:bg-gray-800 flex justify-center items-center text-base md:text-xl text-white h-full w-full md:pb-1 '>
+                    <AiOutlineUp />
                 </button>
             </span>
         </div>
-        <div className='w-full ml-8'>
-            <div className='w-full text-xl flex justify-between'>
+        <div className='w-full ml-8 h-full flex flex-col'>
+            <div className='w-full text-lg md:text-xl lg:text-2xl flex justify-between'>
                 <h3>{title}</h3> 
-                <RemoveCartItem id={id} email={email}/>
+                <span className='md:inline hidden'>
+                    <RemoveCartItem id={id} email={email}/>
+                </span>
             </div>
-            <p className=' text-2xl'>Price: ${price}</p>
+            <p className='text-xl md:text-2xl lg:text-3xl'>Price: ${price}</p>
+            <div className='flex-grow'></div>
+            <span id='h' className='md:hidden inline'>
+                <RemoveCartItem2/>
+            </span>
         </div>
      </section> 
     </>

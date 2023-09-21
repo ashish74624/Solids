@@ -1,15 +1,10 @@
 'use client'
 import React from 'react'
-import Bin from '../Icons/Bin'
 import { useRouter } from 'next/navigation'
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card"
+import { Button } from "@/components/ui/button"
 
 
-export default function RemoveCartItem({id,email}:any) {
+export default function RemoveCartItem2({id,email}:any) {
   const router = useRouter();
   const remove=async(id:string,email:string)=>{
     const backend = process.env.NODE_ENV ==='production' ? process.env.BACKEND :'http://localhost:3000';
@@ -27,19 +22,8 @@ export default function RemoveCartItem({id,email}:any) {
     }
   }
   return (
-    <>
-      
-      <HoverCard>
-        <HoverCardTrigger>
           <button onClick={()=>{remove(id,email as string)}}>
-              <Bin/>
+              <Button className='w-14 h-8' variant="outline">Remove</Button>
           </button>  
-        </HoverCardTrigger>
-        <HoverCardContent className=' text-sm w-max px-2 h-max py-2'>
-          Remove Item
-        </HoverCardContent>
-        </HoverCard>
-      
-    </>
   )
 }
