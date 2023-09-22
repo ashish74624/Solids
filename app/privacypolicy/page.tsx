@@ -10,7 +10,7 @@ export default function page() {
      <>
     <h1 className='text-3xl'>Privacy Policy</h1>
 
-    <p>This Privacy Policy discloses how Solids Ecommerce ("we," "our," or "us") collects, uses, and protects personal information obtained from users of our website. Your privacy and the security of your personal information are of utmost importance to us.</p>
+    <p>This Privacy Policy discloses how Solids Ecommerce collects, uses, and protects personal information obtained from users of our website. Your privacy and the security of your personal information are of utmost importance to us.</p>
 
     <h2 className="text-2xl">1. Information We Collect</h2>
     <p>We collect the following personal information from our website users:</p>
@@ -23,7 +23,7 @@ export default function page() {
     <p>We collect personal information through the following methods:</p>
     <ul>
         <li>User Registration: When users create an account on our website, we collect their name and email address.</li>
-        <li>Cookies and Tracking Technologies: We may use cookies and similar tracking technologies to collect information about users' browsing activities on our website.</li>
+        <li>Cookies and Tracking Technologies: We may use cookies and similar tracking technologies to collect information about users browsing activities on our website.</li>
     </ul>
 
     <h2 className="text-2xl">3. How We Use Information</h2>
@@ -35,7 +35,7 @@ export default function page() {
     </ul>
 
     <h2 className="text-2xl">4. How We Keep Information Safe</h2>
-    <p>We take reasonable steps to safeguard your personal information. We employ industry-standard security measures to protect against the unauthorized access, disclosure, alteration, or destruction of your personal information. Our website uses a third-party authentication service called "Kinde Auth" to ensure the security of user data. Kinde Auth has its own security measures in place to protect user information.</p>
+    <p>We take reasonable steps to safeguard your personal information. We employ industry-standard security measures to protect against the unauthorized access, disclosure, alteration, or destruction of your personal information. Our website uses a third-party authentication service called Kinde Auth to ensure the security of user data. Kinde Auth has its own security measures in place to protect user information.</p>
 
     <h2 className="text-2xl">5. Information Sharing with Third Parties</h2>
     <p>We do not share your personal information with third parties except as follows:</p>
@@ -48,7 +48,7 @@ export default function page() {
     <p>You can choose not to provide certain information or opt-out of certain data collection methods. However, this may limit your ability to use certain features of our website.</p>
 
     <h2 className="text-2xl">7. Changes to this Privacy Policy</h2>
-    <p>We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. Any updates will be posted on this page with a revised "Last Updated" date.</p>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons.</p>
 
     <h2 className="text-2xl">8. Contact Us</h2>
     <p>If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at ashish74624@gmail.com.</p>
