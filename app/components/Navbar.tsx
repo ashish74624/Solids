@@ -74,16 +74,31 @@ export default function Navbar() {
                           My Cart
                         </DropdownMenuItem>
                       </Link>
-                      <Link href={'/privacypolicy'}>
+                      <a href="https://merchant.razorpay.com/policy/MfQmyQMkXcExD0/privacy" target="_blank">
                         <DropdownMenuItem>
                           Privacy Policy
                         </DropdownMenuItem>
-                      </Link>
-                      <Link href={'/tnc'}>
+                      </a>
+                      <a href="https://merchant.razorpay.com/policy/MfQmyQMkXcExD0/terms" target="_blank">
                         <DropdownMenuItem>
                           Terms and Condition
                         </DropdownMenuItem>
-                      </Link>
+                      </a>
+                      <a href="https://merchant.razorpay.com/policy/MfQmyQMkXcExD0/refund" target="_blank">
+                        <DropdownMenuItem>
+                          Cancellation and refund
+                        </DropdownMenuItem>
+                      </a>
+                      <a href="https://merchant.razorpay.com/policy/MfQmyQMkXcExD0/shipping" target="_blank">
+                        <DropdownMenuItem>
+                          Shipping details
+                        </DropdownMenuItem>
+                      </a>
+                      <a href="https://merchant.razorpay.com/policy/MfQmyQMkXcExD0/contact_us" target="_blank">
+                        <DropdownMenuItem>
+                          Contact us
+                        </DropdownMenuItem>
+                      </a>
                       {/* <DropdownMenuItem>Subscription</DropdownMenuItem> */}
                     </DropdownMenuContent>
                   </DropdownMenu>
