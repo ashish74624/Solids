@@ -13,7 +13,7 @@ export default async function page() {
   });
   const data:any = await res?.json();
   const product= data?.list
-  if(isAuthenticated() && product.length<=0){
+  if(isAuthenticated() && product?.length<=0){
     return(
       <>
         <div>

@@ -74,6 +74,11 @@ export default function Navbar() {
                           My Cart
                         </DropdownMenuItem>
                       </Link>
+                      <Link href={'/privacypolicy'}>
+                        <DropdownMenuItem>
+                          Privacy Policy
+                        </DropdownMenuItem>
+                      </Link>
                       {/* <DropdownMenuItem>Subscription</DropdownMenuItem> */}
                     </DropdownMenuContent>
                   </DropdownMenu>

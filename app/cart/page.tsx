@@ -18,7 +18,7 @@ export default async function Cart() {
     }
   }
 
-  if(isAuthenticated() && cart.length<=0){
+  if(isAuthenticated() && cart?.length<=0){
     return (
       <>
         <section className='w-[90vw] mx-auto bg-white'>
