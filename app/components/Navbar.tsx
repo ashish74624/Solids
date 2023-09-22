@@ -79,6 +79,11 @@ export default function Navbar() {
                           Privacy Policy
                         </DropdownMenuItem>
                       </Link>
+                      <Link href={'/tnc'}>
+                        <DropdownMenuItem>
+                          Terms and Condition
+                        </DropdownMenuItem>
+                      </Link>
                       {/* <DropdownMenuItem>Subscription</DropdownMenuItem> */}
                     </DropdownMenuContent>
                   </DropdownMenu>
