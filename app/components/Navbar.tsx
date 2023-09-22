@@ -39,41 +39,41 @@ export default function Navbar() {
                       <DropdownMenuSeparator />
                       { !isAuthenticated() ?
                       (<>
-                        <DropdownMenuItem>
-                          <LoginLink>
+                        <LoginLink>
+                          <DropdownMenuItem>
                             Sign in
-                          </LoginLink>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          <RegisterLink>
+                          </DropdownMenuItem>
+                        </LoginLink>
+                        <RegisterLink>
+                          <DropdownMenuItem>
                             Sign Up
-                          </RegisterLink>
-                        </DropdownMenuItem>
+                          </DropdownMenuItem>
+                        </RegisterLink>
                       </>)
                       :
                       (<>
-                        <DropdownMenuItem className=" text-red-500">
-                          <LogoutLink>
+                        <LogoutLink>
+                          <DropdownMenuItem className=" text-red-500">
                             Log Out
-                          </LogoutLink>
-                        </DropdownMenuItem>
+                          </DropdownMenuItem>
+                        </LogoutLink>
                       </>)}
                       
                       <DropdownMenuItem>
-                        <Link href={'/orders'}>
+                        <Link href={'/'}>
                           Orders
                         </Link>
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <Link href={'/wishlist'}>
+                      <Link href={'/wishlist'}>
+                        <DropdownMenuItem>
                           Wishlist
-                        </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem className="md:hidden inline-block">
-                        <Link href={'/cart'}>
+                        </DropdownMenuItem>
+                      </Link>
+                      <Link className="md:hidden inline-block" href={'/cart'}>
+                        <DropdownMenuItem className="md:hidden inline-block">
                           My Cart
-                        </Link>
-                      </DropdownMenuItem>
+                        </DropdownMenuItem>
+                      </Link>
                       {/* <DropdownMenuItem>Subscription</DropdownMenuItem> */}
                     </DropdownMenuContent>
                   </DropdownMenu>
