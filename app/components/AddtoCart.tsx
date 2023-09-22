@@ -30,16 +30,9 @@ interface ID {
 }
 
 export default async function AddtoCart({id,userEmail,isUser}:ID) {
-  
-  
-  const backend= process.env.NODE_ENV==='production' ? process.env.BACKEND : 'http://localhost:3000'
-  const res2 = await fetch(`${backend}/api/test`)
-  const data2 = await res2.json()
-  const h = data2.msg
+
   return (
     <>
-    
-    <div className="text-6xl">{h}</div>
       <button onClick={()=>{ isUser? addToCart(id,userEmail as string): askAuth()}} className='w-36 md:w-40 h-10 lg:w-48 md:h-12 text-xl md:text-2xl text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300'>
           Add to Cart
       </button> 
