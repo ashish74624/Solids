@@ -12,7 +12,7 @@ import {
 export default function RemoveCartItem({id,email}:any) {
   const router = useRouter();
   const remove=async(id:string,email:string)=>{
-    const backend = process.env.NODE_ENV ==='production' ? process.env.BACKEND :'http://localhost:3000/';
+    const backend = process.env.NODE_ENV ==='production' ? process.env.BACKENDURL :'http://localhost:3000/';
     const res = await fetch(`${backend}api/getCartItems/${email}`,{
       method:'DELETE',
       headers:{
