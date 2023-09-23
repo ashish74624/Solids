@@ -13,7 +13,7 @@ export default function RemoveFromWishlist({id,userEmail}:ID) {
   const router = useRouter();
   const removeFromWishlist =async(id:string,email:string)=>{
   
-    const backend = process.env.NODE_ENV==='production'? '' :'http://localhost:3000/api';
+    const backend = process.env.NODE_ENV==='production'? process.env.BACKENDURL :'http://localhost:3000/api';
     const res = await fetch(`${backend}/api/getWishlist/${email}`,{
       method:'DELETE',
       headers:{
