@@ -3,9 +3,9 @@ import React from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 
 const addToWishlist=async(id:string,email:string)=>{
-    const backend = process.env.NODE_ENV==='production'?process.env.BACKENDURL :'http://localhost:3000/api';
+    const backend = process.env.NODE_ENV==='production'? '' :'http://localhost:3000';
     try{
-        const res = await fetch(`${backend}/addToWishlist`,{
+        const res = await fetch(`${backend}/api/addToWishlist`,{
             method:'POST',
             headers:{
                 "Content-Type": "application/json",
