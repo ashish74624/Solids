@@ -7,8 +7,8 @@ import Link from 'next/link';
 export default async function page() {
   const {isAuthenticated,getUser} = getKindeServerSession();
   const user = getUser();
-  const backend = process.env.NODE_ENV == 'production' ? process.env.BACKENDURL :'http://localhost:3000/';
-  const res = !isAuthenticated() ? undefined : await fetch(`${backend}/api/getWishlist/${user?.email}`,{
+  const backend = process.env.NODE_ENV == 'production' ? process.env.BACKENDURL :'http://localhost:3000/api';
+  const res = !isAuthenticated() ? undefined : await fetch(`${backend}/getWishlist/${user?.email}`,{
     cache:'no-store'
   });
   const data:any = await res?.json();
