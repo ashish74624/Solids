@@ -4,8 +4,8 @@ import toast, { Toaster } from 'react-hot-toast';
 
 
 const addToCart=async(id:string,user:string)=>{
-    const backend = process.env.NODE_ENV ==='production' ? process.env.BACKENDURL :'http://localhost:3000';
-    const res = await fetch(`${backend}/api/addToCart`,{
+  
+    const res = await fetch(`/api/addToCart`,{
       method:'POST',
       headers:{
         "Content-Type": "application/json",

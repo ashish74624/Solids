@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/button"
 export default function RemoveCartItem2({id,email}:any) {
   const router = useRouter();
   const remove=async(id:string,email:string)=>{
-    const backend = process.env.NODE_ENV ==='production' ? process.env.BACKENDURL :'http://localhost:3000';
-    const res = await fetch(`${backend}/api/getCartItems/${email}`,{
+    
+    const res = await fetch(`/api/getCartItems/${email}`,{
       method:'DELETE',
       headers:{
         'Content-Type':'application/json'
