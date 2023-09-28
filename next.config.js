@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env: {
+    paymentServer: process.env.paymentServer,
+  },
     images: {
         remotePatterns: [
           {

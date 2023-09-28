@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import Navbar from './components/Navbar'
 import { Josefin_Slab } from "next/font/google"
+import Script from 'next/script'
 
 const sc= Josefin_Slab({
   subsets:['latin'],
@@ -27,6 +28,7 @@ export default function RootLayout({
         </header>
         {children}
       </body>
+      <Script src='https://checkout.razorpay.com/v1/checkout.js'/>
     </html>
   )
 }

@@ -5,6 +5,7 @@ import React from 'react'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { Toaster } from 'react-hot-toast';
 import Image from 'next/image';
+import BuyNow from '@/app/components/BuyNow';
 
 type Params={
   params:{
@@ -26,9 +27,7 @@ export default async function Product({params:{id}}:Params) {
           <div id='buttons' className=' space-x-4 mx-auto w-max'>
             {!isAuthenticated()?<AddtoCart id={id} isUser={false}/>:<AddtoCart id={id} isUser={true} userEmail={user.email as string}/>}
             
-            <button className='w-36 md:w-40 h-10 lg:w-48 md:h-12 text-xl md:text-2xl text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 '>
-              Buy Now
-            </button>
+            <BuyNow id={id} price={data.price} firstName={user.given_name} lastName={user.family_name} email={user.email} />
           </div>
         </div>
         <div className=' w-full h-full bg-white p-2 md:p-2 lg:p-10'>
