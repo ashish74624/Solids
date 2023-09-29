@@ -11,7 +11,7 @@ const nso= Noto_Sans_Osmanya({
 })
 
 
-export default async function page() {
+export default async function Payment() {
     const searchParams = useSearchParams();
     const reference = searchParams.get('reference')
   return (
