@@ -22,11 +22,11 @@ const checkout =async(id:string,price:string,firstName:string,lastName:string,em
     description: "Test Transaction",
     image : "https://image-get.onrender.com/ashishkumar74624@gmail.com/solids/1.png",
     order_id : data.order.id, 
-    callback_url : `${process.env.paymentServer}/paymentVerification/${id}`,
+    callback_url : `${process.env.paymentServer}/paymentVerification/${email}/${id}`,
     prefill: { 
-        name : `${firstName} ${lastName}`, //your customer's name
+        name : `${firstName} ${lastName}`,
         email: email,
-        contact: "9999999999"
+        contact: ""
     },
     notes: {
         address: "Razorpay Corporate Office"

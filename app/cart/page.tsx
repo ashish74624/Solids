@@ -3,12 +3,13 @@ import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import UnAuthCart from '../components/UnAuthCart';
 import CartCard from '../components/CartCard';
 import Link from 'next/link';
+import PlaceOrder from '../components/PlaceOrder';
 
 export default async function Cart() {
   const {isAuthenticated,getUser} = getKindeServerSession();
   const user = getUser();
   const backend= process.env.NODE_ENV==='production' ? process.env.BACKENDURL : 'http://localhost:3000'
-  const res = !isAuthenticated() ? undefined : await fetch(`${backend}/api/getCartItems/${user?.email}`,{cache:'no-cache'});
+  const res = !isAuthenticated() ? undefined : await fetch(`${backend}/api/getCartItems/${user?.email}`,{cache:'no-store'});
   const data:any = await res?.json();
   const cart= data?.cart
   let totalPrice=0
@@ -75,9 +76,7 @@ export default async function Cart() {
                 {totalPrice-10}
               </div>
               <div className='mt-4'>
-                <button className=' w-full h-10 md:h-11 text-xl text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300'>
-                  Place Order
-                </button> 
+                <PlaceOrder price={totalPrice} email={user?.email} firstName={user?.given_name} lastName={user?.family_name}/>
               </div>
           </div>
         </div>
