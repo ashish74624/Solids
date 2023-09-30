@@ -27,7 +27,7 @@ export default async function Product({params:{id}}:Params) {
           <div id='buttons' className=' space-x-4 mx-auto w-max'>
             {!isAuthenticated()?<AddtoCart id={id} isUser={false}/>:<AddtoCart id={id} isUser={true} userEmail={user.email as string}/>}
             
-            <BuyNow id={id} price={data.price} firstName={user.given_name} lastName={user.family_name} email={user.email} />
+            <BuyNow id={id} price={data.price} firstName={user?.given_name} lastName={user?.family_name} email={user?.email} isUser={!isAuthenticated()?false:true} />
           </div>
         </div>
         <div className=' w-full h-full bg-white p-2 md:p-2 lg:p-10'>

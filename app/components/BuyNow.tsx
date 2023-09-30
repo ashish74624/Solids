@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import toast, { Toaster } from 'react-hot-toast';
 
 const checkout =async(id:string,price:string,firstName:string,lastName:string,email:string)=>{
     const res = await fetch(`${process.env.paymentServer}/checkout`,{
@@ -41,15 +42,23 @@ razor.open();
     
 }
 
-export default function BuyNow({id,price,firstName,lastName,email}:any) {
+const askAuth=async()=>{
+  toast("Please Login To Continue")
+}
+
+export default function BuyNow({id,price,firstName,lastName,email,isUser}:any) {
 
   return (
     <>
       <button className='w-36 md:w-40 h-10 lg:w-48 md:h-12 text-xl md:text-2xl text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 '
-      onClick={()=>{checkout(id,price,firstName,lastName,email)}}
+      onClick={()=>{isUser ? checkout(id,price,firstName,lastName,email) : askAuth() }}
       >
         Buy Now
       </button>
+      <Toaster position="bottom-right" 
+        toastOptions={{
+          className :' bg-blue-400/20 w-64 text-blue-700 rounded-full border-2 border-blue-700 h-[70px] grid place-content-center'
+    }}/>
     </>
   )
 }
