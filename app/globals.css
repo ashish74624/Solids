@@ -17,6 +17,10 @@
     background: transparent;
   }
 
+  body{
+    -webkit-tap-highlight-color: transparent;
+  }
+
 }
  
 @layer base {
