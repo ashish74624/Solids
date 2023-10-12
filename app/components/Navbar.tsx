@@ -60,7 +60,7 @@ export default function Navbar() {
                       </>)}
                       
                       <DropdownMenuItem>
-                        <Link href={'/'}>
+                        <Link href={`/order/${user.email}`}>
                           Orders
                         </Link>
                       </DropdownMenuItem>
