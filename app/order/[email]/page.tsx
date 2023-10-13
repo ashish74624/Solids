@@ -1,7 +1,6 @@
 'use client'
 import OrderCard from '@/app/components/OrderCard'
 import React, { useEffect, useState } from 'react'
-
 type Params ={
   params:{
     email:string
@@ -29,7 +28,7 @@ export default  function page({params:{email}}:Params) {
       <div className='col-span-1 md:col-span-2 lg:col-span-3 text-3xl font-sans mt-10'>Your Orders</div>
       {product.map((item:any)=>(
         <>
-          <OrderCard img={item.image} title={item.title} email={eml}/>
+          <OrderCard id={item.id} img={item.image} title={item.title} email={eml}/>
         </>
       ))}
     </section>

@@ -25,8 +25,8 @@ export default function OrderCard({id,img,title,email}:any) {
             </div>
             <div className='w-full flex justify-center'>
 
-            <button className=' w-72 mx-auto h-10 font-sans text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300'
-            onClick={cancelOrder}
+            <button className=' w-72 mx-auto h-10 font-sans text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 active:bg-gray-800'
+            onClick={()=>{cancelOrder()}}
             >
                 Cancel Order
             </button>

@@ -57,13 +57,15 @@ export default function Navbar() {
                             Log Out
                           </DropdownMenuItem>
                         </LogoutLink>
-                      </>)}
-                      
-                      <DropdownMenuItem>
-                        <Link href={`/order/${user.email}`}>
+
+                        <DropdownMenuItem>
+                        <Link href={`/order/${user?.email}`}>
                           Orders
                         </Link>
                       </DropdownMenuItem>
+
+                      </>)}
+                                            
                       <Link href={'/wishlist'}>
                         <DropdownMenuItem>
                           Wishlist
