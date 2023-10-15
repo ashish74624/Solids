@@ -35,7 +35,7 @@ export async function DELETE(request:Request ,{params:{email}}:Params){
     try{
         connectMongoDB();
         const order = await paymentModel.findOneAndDelete({email:email,productId:id})
-        return NextResponse.json({done:true})
+        return NextResponse.json({done:true},{status:200})
     }catch{
         return NextResponse.json({done:false})
     }
