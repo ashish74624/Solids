@@ -40,7 +40,7 @@ export default  function Order(email:any) {
       ):
       (
       <div className='w-full h-80 col-span-3 font-sans flex justify-center items-center flex-col'>
-        You Don't have any orders yet
+        You Do not have any orders yet
         <Link className=' text-red-500 hover:underline' href={'/'}>Continue shoping</Link>
       </div>
       )
