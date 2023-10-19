@@ -49,7 +49,7 @@ export default async function Cart() {
               cart.map((cart:any)=>
               (
                 <div key={cart?.id}>
-                  <CartCard id={cart?.id} email={user?.email} title={cart?.title} image={cart?.image} price={cart?.price}/>
+                  <CartCard id={cart?.id} email={user?.email} title={cart?.title} image={cart?.image} price={cart?.price} quant={cart?.quantity} />
                 </div>
               ))
             }

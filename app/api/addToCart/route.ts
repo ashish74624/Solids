@@ -7,7 +7,7 @@ export async function GET (request:Request){
 }
 
 export async function POST(request:Request) {
-    let {id,user} = await request.json();
+    let {id,user,title,price,image} = await request.json();
     await connectMongoDB();
     const check = await cartModel.findOne({product_id : id,email:user})
     if(check){
@@ -16,9 +16,13 @@ export async function POST(request:Request) {
     }
     const cart = await cartModel.create({
         product_id : id,
+        title:title,
+        price:price,
+        image:image,
         email:user,
         quantity:1
     })
+    console.log(cart)
     await cart.save();
     return NextResponse.json({done:true,msg:"Item added to the Cart"},{status:200})
 }

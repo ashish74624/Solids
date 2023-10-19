@@ -3,8 +3,7 @@ import React from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 
 
-
-const addToCart=async(id:string,user:string)=>{
+const addToCart=async(id:string,user:string,title:string,price:number,image:string)=>{
   
   const res = await fetch(`/api/addToCart`,{
     method:'POST',
@@ -14,6 +13,9 @@ const addToCart=async(id:string,user:string)=>{
     body: JSON.stringify({
       id:id,
       user : user.toString(),
+      title:title,
+      price:Number(price),
+      image:image
     })
   });
   const data = await res.json();
@@ -21,15 +23,18 @@ const addToCart=async(id:string,user:string)=>{
 }
 
 interface ID {
-    id : string,
-    userEmail ?: string
+  id : string,
+  userEmail ?: string,
+  title ?:string,
+  price ?:number,
+  image ?:string
 }
 
-export default function AddtoCart2({id,userEmail}:ID) {
+export default function AddtoCart2({id,userEmail,title,price,image}:ID) {
 
   return (
     <>
-      <button onClick={()=>{ addToCart(id,userEmail as string)}} className=' w-32 h-10 text-xl text-red-500 bg-white rounded-lg border border-red-500 '>
+      <button onClick={()=>{ addToCart(id,userEmail as string,title as string,Number(price),image as string)}} className=' w-32 h-10 text-xl text-red-500 bg-white rounded-lg border border-red-500 '>
           Add to Cart
       </button> 
       <Toaster position="bottom-right" 

@@ -18,7 +18,7 @@ export default function WishListCard({title,image,price,id,email}:any) {
             <p className='text-2xl lg:block hidden'>Price ${price}</p>
           </div>
           <span className='space-x-4'>
-            <AddtoCart2 id={id} userEmail={email}/>
+            <AddtoCart2 id={id} userEmail={email} title={title} price={price} image={image}/>
             <RemoveFromWishlist id={id} userEmail={email}/>              
           </span>
         </div>
