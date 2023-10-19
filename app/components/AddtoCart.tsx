@@ -35,7 +35,7 @@ interface ID {
     image ?:string
 }
 
-export default async function AddtoCart({id,userEmail,isUser,title,price,image}:ID) {
+export default function AddtoCart({id,userEmail,isUser,title,price,image}:ID) {
 
   return (
     <>
