@@ -11,8 +11,7 @@ export default  function Order({email}:any) {
   useEffect(()=>{
     const getOrders = async () => {
       const email1 = email.replace('%40','@')
-      const backend = process.env.NODE_ENV == 'production' ? process.env.BACKENDURL :'http://localhost:3000';
-      const res = await fetch(`${backend}/api/getOrders/${email1}`)
+      const res = await fetch(`/api/getOrders/${email1}`)
       const d = await res.json()
       const data = d?.order
       setProduct(data)
