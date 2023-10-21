@@ -3,11 +3,6 @@ import OrderCard from '@/app/components/OrderCard'
 import OrderSusp from '@/app/components/OrderSusp'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-type Params ={
-  params:{
-    email:string
-  }
-}
 
 export default  function Order({email}:any) {
   const [product,setProduct] = useState([])
@@ -19,7 +14,7 @@ export default  function Order({email}:any) {
       const backend = process.env.NODE_ENV == 'production' ? process.env.BACKENDURL :'http://localhost:3000';
       const res = await fetch(`${backend}/api/getOrders/${email1}`)
       const d = await res.json()
-      const data = d?.product
+      const data = d?.order
       setProduct(data)
       setEml(email1)
       setLoading(false)
@@ -63,7 +58,7 @@ export default  function Order({email}:any) {
       <>
         {product?.map((item:any)=>(
         <>
-          <OrderCard id={item.id} img={item.image} title={item.title} email={eml}/>
+          <OrderCard id={item?.productId} img={item?.image} title={item?.title} email={eml} quantity={item?.quantity}/>
         </>
       ))}
       </>

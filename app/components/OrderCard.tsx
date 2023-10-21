@@ -10,7 +10,7 @@ import {
   } from "@/components/ui/dialog"
   
 
-export default function OrderCard({id,img,title,email}:any) {
+export default function OrderCard({id,img,title,email,quantity}:any) {
     const cancelOrder = async()=>{
         const res = await fetch(`/api/getOrders/${email}`,{
             method:'DELETE',
@@ -33,7 +33,8 @@ export default function OrderCard({id,img,title,email}:any) {
             </div>
             
             <div className="px-5 pb-5">
-                <h5 className="text-xl font-semibold tracking-tight text-gray-900 group-hover:text-blue-600 transition-all duration-500 ">{(title.length>30) ?title.substring(0,29)+'...':title}</h5>
+                <h5 className="text-xl font-semibold tracking-tight text-gray-900 group-hover:text-blue-600 transition-all duration-500 ">{(title?.length>30) ?title.substring(0,29)+'...':title}</h5>
+                <h5>Quantity : {quantity}</h5> 
             </div>
             <div className='w-full flex justify-center'>
                 <Dialog>
