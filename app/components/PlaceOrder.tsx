@@ -1,8 +1,11 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
+import Loading from '../Icons/Loading'
 
 export default function PlaceOrder({price,email,firstName,lastName}:any) {
+  const [loading,setLoading] = useState(false)
   const getCardItems= async()=>{
+    setLoading(true)
     const res1 = await fetch(`/api/getCartItems/${email}`)
     const data1 = await res1.json()
     let lst =[]
@@ -45,13 +48,22 @@ export default function PlaceOrder({price,email,firstName,lastName}:any) {
 };
 const razor = new (window as any).Razorpay(options);
 razor.open();
+setLoading(false)
   }
   return (
     <>
-        <button className=' w-full h-10 md:h-11 text-xl text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300'
+        <button disabled={loading} className={` w-full h-10 md:h-11 text-xl text-white ${loading?"bg-gray-500":"bg-gray-800"} rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300`}
         onClick={()=>{getCardItems()}}
         >
-            Place Order
+          {loading
+          ?
+          <>
+            <Loading/> Place Order
+          </>
+          :
+          <>Place Order</>
+          }
+            
         </button>  
     </>
   )
