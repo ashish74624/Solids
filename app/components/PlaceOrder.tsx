@@ -12,7 +12,7 @@ export default function PlaceOrder({price,email,firstName,lastName}:any) {
     const cart= data1?.cart
     if(cart){
       for(const item of cart){
-        lst.push(item.id)
+        lst.push(`${item.product_id}-${item.quantity}`)
       }
     }
     const res = await fetch(`${process.env.paymentServer}/checkout`,{

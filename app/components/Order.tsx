@@ -9,7 +9,7 @@ type Params ={
   }
 }
 
-export default  function Order(email:any) {
+export default  function Order({email}:any) {
   const [product,setProduct] = useState([])
   const [eml,setEml] = useState('')
   const [isLoading,setLoading] = useState(true)
