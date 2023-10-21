@@ -7,8 +7,8 @@ export async function PATCH(request:Request){
     const {email,id} = await request.json()
     try{
         connectMongoDB();
-        const cart:any = cartModel.findOne({email:email,productId:id})
-        const dec = await cartModel.updateOne({email:email,productId:id},{$inc : {quantity:-1}})
+        const id1:string=id.toString()
+        const dec = await cartModel.updateOne({email:email,product_id:id1},{$inc : {quantity:-1}})
         
         return NextResponse.json({done:true},{status:200})
     }catch{

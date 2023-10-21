@@ -5,11 +5,15 @@ import RemoveCartItem from './RemoveCartItem'
 import RemoveCartItem2 from './RemoveCartItem2'
 import { AiOutlineDown } from "react-icons/ai";
 import { AiOutlineUp } from "react-icons/ai";
+import { usePrice } from '../context/PriceContext'
 
-export default function CartCard({title,image,price,id,email,quant}:any) {
+export default function CartCard({title,image,totalPrice,itemPrice,id,email,quant}:any) {
+    const {price,setPrice}:any = usePrice()
+    // setPrice(totalPrice)
     const [quantity,setQuantity] = useState(Number(quant))
     const decrement = async()=>{
         setQuantity(quantity<=1?quantity:quantity-1);
+        setPrice(quantity<=1?price:price-itemPrice)
         const res = quantity<=1?undefined:await fetch(`/api/decQuant`,{
             method:'PATCH',
             headers:{
@@ -23,6 +27,7 @@ export default function CartCard({title,image,price,id,email,quant}:any) {
     }
     const increment = async()=>{
         setQuantity(quantity+1);
+        setPrice(price+itemPrice)
         const res = await fetch(`/api/incQuant`,{
             method:'PATCH',
             headers:{
@@ -65,7 +70,7 @@ export default function CartCard({title,image,price,id,email,quant}:any) {
                     <RemoveCartItem id={id} email={email}/>
                 </span>
             </div>
-            <p className='text-xl md:text-2xl lg:text-3xl'>Price: ${price}</p>
+            <p className='text-xl md:text-2xl lg:text-3xl'>Price: ${itemPrice}</p>
             <div className='flex-grow'></div>
             <span id='h' className='md:hidden inline'>
                 <RemoveCartItem2/>
