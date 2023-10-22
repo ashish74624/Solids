@@ -27,7 +27,7 @@ export default function OrderCard({id,img,title,email,quantity}:any) {
       }
   return (
     <>
-        <div className={` w-80 xl:w-96 min-h-[410px] h-max pb-2 bg-white border border-gray-200 rounded-lg shadow`}>
+        <div className={`w-80 lg:w-96 min-h-[410px] h-max pb-2 bg-white border border-gray-200 rounded-lg shadow`}>
             <div className="rounded-t-lg pb-2 h-72 overflow-hidden flex justify-center pt-1">
                 <img className="rounded-t-lg pb-2 h-72 overflow-hidden" src={img} alt="product image" />
             </div>

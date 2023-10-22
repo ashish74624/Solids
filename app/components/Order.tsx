@@ -44,7 +44,7 @@ export default  function Order({email}:any) {
   }
 
   return (
-    <section className='lg:w-[80vw] md:w-[90vw] w-screen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto gap-4'>
+    <section className='lg:w-[80vw] md:w-[90vw] w-80 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto gap-4'>
       <div className='col-span-1 md:col-span-2 lg:col-span-3 text-3xl font-sans mt-5'>Your Orders</div>
       {
       isLoading ?
