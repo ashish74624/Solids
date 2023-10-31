@@ -8,7 +8,7 @@ export default function CartSide({length,given_name,email,family_name}:any) {
     useEffect(()=>{
       const check = async() => {
         const backend=process.env.NODE_ENV=='production'?process.env.BACKENDURL:'http://localhost:3000'
-        const res = await fetch(`${backend}/api/getCartItems/${email}`);
+        const res = await fetch(`/api/getCartItems/${email}`);
         const data = await res.json();
         const cart = data?.cart
         let totalPrice=0;
