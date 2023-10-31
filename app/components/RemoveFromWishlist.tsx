@@ -14,7 +14,7 @@ export default function RemoveFromWishlist({id,userEmail}:ID) {
   const removeFromWishlist =async(id:string,email:string)=>{
     
     const res = await fetch(`/api/getWishlist/${email}`,{
-      method:'DELETE',
+      method:'DELETE', 
       headers:{
         "Content-Type": "application/json",
       },
