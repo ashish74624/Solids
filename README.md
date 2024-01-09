@@ -1,4 +1,4 @@
-# Solids - E-Commerce Website with Next.js 13
+# Solids : E-Commerce Website with Next.js 13
 
 ## Overview
 Solids is a feature-rich e-commerce website developed using Next.js 13. This platform integrates third-party authentication via Kindle Auth, employs MongoDB for robust data storage, and ensures secure and seamless transactions through the Razorpay payment gateway.
