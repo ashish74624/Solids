@@ -25,13 +25,13 @@ export default function Slider() {
     >
 
       <div>
-        <Image className='w-screen h-[600px]' src="https://image-get.onrender.com/ashishkumar74624@gmail.com/Ecommerce/1.webp" alt='mens wear' width={1024} height={600} />
+        <Image className='w-screen h-[600px]' src="/1.jpg" alt='mens wear' width={1024} height={600} />
       </div>
       <div>
-        <Image className='w-screen h-[600px]' src="https://image-get.onrender.com/ashishkumar74624@gmail.com/Ecommerce/3.webp" alt='womens wear' width={1024} height={600}  />
+        <Image className='w-screen h-[600px]' src="/3.jpg" alt='womens wear' width={1024} height={600}  />
       </div>
       <div>
-        <Image className='w-screen h-[600px]' src="https://image-get.onrender.com/ashishkumar74624@gmail.com/Ecommerce/2.webp" alt='watches' width={1024} height={600}  />
+        <Image className='w-screen h-[600px]' src="/2.jpg" alt='watches' width={1024} height={600}  />
       </div>
     </Carousel>
     </>
