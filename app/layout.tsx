@@ -4,9 +4,10 @@ import Navbar from './components/Navbar'
 import { Josefin_Slab } from "next/font/google"
 import Script from 'next/script'
 import { PriceProvider } from './context/PriceContext'
+import KeepAlive from './components/KeepAlive'
 
-const sc= Josefin_Slab({
-  subsets:['latin'],
+const sc = Josefin_Slab({
+  subsets: ['latin'],
   weight: ['600'],
 })
 
@@ -25,13 +26,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${sc.className} bg-[#F3F4F7] h-screen w-screen overflow-x-hidden overflow-y-scroll`}>
         <PriceProvider>
-        <header>
-          <Navbar/>
-        </header>
-        {children}
-      </PriceProvider>
+          <header>
+            <Navbar />
+          </header>
+          {children}
+        </PriceProvider>
+        <KeepAlive />
       </body>
-      <Script src='https://checkout.razorpay.com/v1/checkout.js'/>
+      <Script src='https://checkout.razorpay.com/v1/checkout.js' />
     </html>
   )
 }
